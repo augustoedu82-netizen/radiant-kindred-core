@@ -89,19 +89,14 @@ const stateFees = [
 
 const testimonials = [
   {
-    n: "Rafael M.",
-    r: "E-commerce",
-    q: "Abri a LLC em uma semana e recebi o EIN sem dor de cabeça. Hoje fatura em dólar direto na Mercury.",
+    n: "Martinelli & Co LLC",
+    r: "E-commerce global",
+    q: "Criei minha empresa em Wyoming para operar no e-commerce global. O Eduardo fez todo o processo comigo, do registro ao EIN, e foi o menor custo que encontrei para abrir LLC nos EUA.",
   },
   {
-    n: "Juliana P.",
-    r: "Marketing digital",
-    q: "O que me travava era a burocracia em inglês. Eles resolveram tudo e explicaram cada passo em português.",
-  },
-  {
-    n: "Diego A.",
-    r: "Dev freelancer",
-    q: "Preço claro, sem surpresa: paguei o serviço e a taxa do estado. Melhor custo que encontrei.",
+    n: "Juan Arango Ramirez",
+    r: "Juan Services LLC",
+    q: "Tenho uma empresa de pintura e construção em Massachusetts. O Eduardo me ajudou do início ao fim: da criação da LLC ao EIN e ao annual report. Tudo em português e sem dor de cabeça.",
   },
 ];
 
@@ -337,9 +332,9 @@ function Index() {
       <section className="mx-auto max-w-6xl px-5 py-20">
         <div className="max-w-2xl">
           <span className="eyebrow">Quem já destravou</span>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Brasileiros faturando em dólar</h2>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Brasileiros e latinos faturando em dólar</h2>
         </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
           {testimonials.map((t) => (
             <figure key={t.n} className="soft-card flex h-full flex-col gap-4 p-6">
               <div className="flex gap-1 text-primary">
