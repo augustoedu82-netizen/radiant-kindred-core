@@ -111,7 +111,7 @@ function Nav() {
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           <a className="transition-colors hover:text-foreground" href="#como-funciona">Como funciona</a>
           <a className="transition-colors hover:text-foreground" href="#estados">Estados</a>
-          <a className="transition-colors hover:text-foreground" href="#planos">Planos</a>
+          <a className="transition-colors hover:text-foreground" href="#planos">Preço</a>
           <a className="transition-colors hover:text-foreground" href="#faq">Dúvidas</a>
         </nav>
         <a href={WHATSAPP} className="btn-primary !px-5 !py-2.5 !text-sm">
@@ -137,7 +137,7 @@ function Index() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               LLC registrada, EIN emitido, endereço americano e conta bancária. 100% remoto,
-              preço fechado e suporte humano em português do início ao fim.
+              preço único de US$ 250 e suporte humano em português do início ao fim.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a href="#planos" className="btn-primary">
@@ -380,7 +380,7 @@ function Index() {
             <a href={WHATSAPP} className="btn-primary">
               Falar no WhatsApp <ArrowRight className="size-4" />
             </a>
-            <a href="#planos" className="btn-ghost">Ver planos</a>
+            <a href="#planos" className="btn-ghost">Ver o que está incluído</a>
           </div>
         </div>
       </section>
