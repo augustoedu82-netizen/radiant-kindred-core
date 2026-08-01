@@ -376,7 +376,7 @@ function Index() {
               <span className="w-fit rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
                 Tudo incluído
               </span>
-              <p className="mt-6 font-display text-6xl font-extrabold leading-none text-primary">US$ 250</p>
+              <p className="mt-6 font-display text-6xl font-extrabold leading-none text-primary">US$ 280</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 taxa fixa do DestravaUSA + taxa do estado
               </p>
