@@ -163,3 +163,9 @@
 @utility hero-glow {
   background-image: var(--gradient-hero);
 }
+
+@layer base {
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
