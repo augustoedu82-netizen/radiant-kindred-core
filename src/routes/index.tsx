@@ -67,42 +67,17 @@ const includes = [
 
 const banks = ["Mercury", "Relay", "Wise", "Payoneer", "Revolut", "Lili"];
 
-const plans = [
-  {
-    name: "Start",
-    price: "US$ 349",
-    note: "+ taxas do estado",
-    d: "Para quem só precisa da empresa aberta e funcionando.",
-    features: ["Abertura da LLC", "EIN (Tax ID)", "Registered agent 12 meses", "Operating agreement", "Suporte no WhatsApp"],
-    cta: "Começar agora",
-    highlight: false,
-  },
-  {
-    name: "Operação",
-    price: "US$ 599",
-    note: "+ taxas do estado",
-    d: "O plano completo: empresa, endereço, banco e compliance.",
-    features: [
-      "Tudo do Start",
-      "Endereço comercial nos EUA",
-      "Correspondência digitalizada",
-      "Aplicação bancária assistida",
-      "Consultoria tributária anual",
-      "Calendário de compliance",
-    ],
-    cta: "Quero o completo",
-    highlight: true,
-  },
-  {
-    name: "Já tenho LLC",
-    price: "US$ 249",
-    note: "por ano",
-    d: "Sua empresa existe, mas está sem manutenção fiscal.",
-    features: ["Diagnóstico da empresa", "Regularização de pendências", "Form 5472 e annual report", "Troca de registered agent"],
-    cta: "Regularizar",
-    highlight: false,
-  },
+const offerFeatures = [
+  "Abertura da LLC no estado escolhido",
+  "EIN (Tax ID) incluído",
+  "Registered agent grátis por 1 ano",
+  "Operating agreement e documentos oficiais",
+  "Endereço comercial nos EUA",
+  "Aplicação bancária assistida (Mercury, Relay, Wise)",
+  "Orientação de compliance e declaração anual",
+  "Suporte em português no WhatsApp",
 ];
+
 
 const faqs = [
   {
@@ -136,7 +111,7 @@ function Nav() {
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           <a className="transition-colors hover:text-foreground" href="#como-funciona">Como funciona</a>
           <a className="transition-colors hover:text-foreground" href="#estados">Estados</a>
-          <a className="transition-colors hover:text-foreground" href="#planos">Planos</a>
+          <a className="transition-colors hover:text-foreground" href="#planos">Preço</a>
           <a className="transition-colors hover:text-foreground" href="#faq">Dúvidas</a>
         </nav>
         <a href={WHATSAPP} className="btn-primary !px-5 !py-2.5 !text-sm">
@@ -162,7 +137,7 @@ function Index() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               LLC registrada, EIN emitido, endereço americano e conta bancária. 100% remoto,
-              preço fechado e suporte humano em português do início ao fim.
+              preço único de US$ 250 e suporte humano em português do início ao fim.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a href="#planos" className="btn-primary">
@@ -329,45 +304,51 @@ function Index() {
 
       {/* Pricing */}
       <section id="planos" className="border-y border-border bg-surface/40">
-        <div className="mx-auto max-w-6xl px-5 py-20">
-          <span className="eyebrow">Planos</span>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Preço fechado, sem taxa escondida</h2>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {plans.map((p) => (
-              <article
-                key={p.name}
-                className={`surface-card flex flex-col p-7 ${
-                  p.highlight ? "ring-2 ring-primary/60 lg:-mt-4 lg:mb-4" : ""
-                }`}
-              >
-                {p.highlight && (
-                  <span className="mb-4 w-fit rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
-                    Mais escolhido
+        <div className="mx-auto max-w-5xl px-5 py-20">
+          <span className="eyebrow">Preço único</span>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+            Um valor fixo, sem taxa escondida
+          </h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            Nada de plano confuso ou upsell no meio do caminho: um preço só, com tudo o que sua
+            empresa precisa para nascer pronta para operar.
+          </p>
+
+          <div className="surface-card mt-12 grid gap-10 p-8 sm:p-12 lg:grid-cols-[0.85fr_1fr]">
+            <div className="lg:border-r lg:border-border lg:pr-10">
+              <span className="w-fit rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
+                Tudo incluído
+              </span>
+              <p className="mt-6 font-display text-6xl font-extrabold leading-none">US$ 250</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                pagamento único + taxas do estado
+              </p>
+              <div className="mt-6 flex items-start gap-3 rounded-xl bg-primary/10 p-4">
+                <ShieldCheck className="mt-0.5 size-5 shrink-0 text-primary" />
+                <p className="text-sm font-semibold">
+                  Registered agent grátis por 1 ano
+                  <span className="mt-1 block text-xs font-normal text-muted-foreground">
+                    Obrigatório por lei em todos os estados — já vem no valor.
                   </span>
-                )}
-                <h3 className="font-display text-xl font-bold">{p.name}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{p.d}</p>
-                <p className="mt-6 font-display text-4xl font-extrabold">{p.price}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{p.note}</p>
-                <ul className="mt-7 flex-1 space-y-3 text-sm">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3">
-                      <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                      <span className="text-muted-foreground">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={WHATSAPP}
-                  className={`mt-8 ${p.highlight ? "btn-primary" : "btn-ghost"} w-full`}
-                >
-                  {p.cta}
-                </a>
-              </article>
-            ))}
+                </p>
+              </div>
+              <a href={WHATSAPP} className="btn-primary mt-8 w-full">
+                Abrir minha empresa <ArrowRight className="size-4" />
+              </a>
+            </div>
+            <ul className="grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-1">
+              {offerFeatures.map((f) => (
+                <li key={f} className="flex items-start gap-3">
+                  <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <span className="text-muted-foreground">{f}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
+
+
 
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-3xl px-5 py-20">
@@ -399,7 +380,7 @@ function Index() {
             <a href={WHATSAPP} className="btn-primary">
               Falar no WhatsApp <ArrowRight className="size-4" />
             </a>
-            <a href="#planos" className="btn-ghost">Ver planos</a>
+            <a href="#planos" className="btn-ghost">Ver o que está incluído</a>
           </div>
         </div>
       </section>
