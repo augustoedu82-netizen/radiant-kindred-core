@@ -304,45 +304,51 @@ function Index() {
 
       {/* Pricing */}
       <section id="planos" className="border-y border-border bg-surface/40">
-        <div className="mx-auto max-w-6xl px-5 py-20">
-          <span className="eyebrow">Planos</span>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Preço fechado, sem taxa escondida</h2>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {plans.map((p) => (
-              <article
-                key={p.name}
-                className={`surface-card flex flex-col p-7 ${
-                  p.highlight ? "ring-2 ring-primary/60 lg:-mt-4 lg:mb-4" : ""
-                }`}
-              >
-                {p.highlight && (
-                  <span className="mb-4 w-fit rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
-                    Mais escolhido
+        <div className="mx-auto max-w-5xl px-5 py-20">
+          <span className="eyebrow">Preço único</span>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+            Um valor fixo, sem taxa escondida
+          </h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            Nada de plano confuso ou upsell no meio do caminho: um preço só, com tudo o que sua
+            empresa precisa para nascer pronta para operar.
+          </p>
+
+          <div className="surface-card mt-12 grid gap-10 p-8 sm:p-12 lg:grid-cols-[0.85fr_1fr]">
+            <div className="lg:border-r lg:border-border lg:pr-10">
+              <span className="w-fit rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
+                Tudo incluído
+              </span>
+              <p className="mt-6 font-display text-6xl font-extrabold leading-none">US$ 250</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                pagamento único + taxas do estado
+              </p>
+              <div className="mt-6 flex items-start gap-3 rounded-xl bg-primary/10 p-4">
+                <ShieldCheck className="mt-0.5 size-5 shrink-0 text-primary" />
+                <p className="text-sm font-semibold">
+                  Registered agent grátis por 1 ano
+                  <span className="mt-1 block text-xs font-normal text-muted-foreground">
+                    Obrigatório por lei em todos os estados — já vem no valor.
                   </span>
-                )}
-                <h3 className="font-display text-xl font-bold">{p.name}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{p.d}</p>
-                <p className="mt-6 font-display text-4xl font-extrabold">{p.price}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{p.note}</p>
-                <ul className="mt-7 flex-1 space-y-3 text-sm">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3">
-                      <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                      <span className="text-muted-foreground">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={WHATSAPP}
-                  className={`mt-8 ${p.highlight ? "btn-primary" : "btn-ghost"} w-full`}
-                >
-                  {p.cta}
-                </a>
-              </article>
-            ))}
+                </p>
+              </div>
+              <a href={WHATSAPP} className="btn-primary mt-8 w-full">
+                Abrir minha empresa <ArrowRight className="size-4" />
+              </a>
+            </div>
+            <ul className="grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-1">
+              {offerFeatures.map((f) => (
+                <li key={f} className="flex items-start gap-3">
+                  <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <span className="text-muted-foreground">{f}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
+
+
 
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-3xl px-5 py-20">
