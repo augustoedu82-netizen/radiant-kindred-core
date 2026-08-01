@@ -1,5 +1,4 @@
 import { defineTool } from "@lovable.dev/mcp-js";
-import { z } from "zod";
 import { FAQ, INCLUDED, PROCESS_STEPS, SERVICE_FEE_USD, STATES } from "../data";
 
 export default defineTool({
@@ -28,5 +27,3 @@ export default defineTool({
     };
   },
 });
-
-export const _schemaUnused = z;
