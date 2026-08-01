@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "LLC nos EUA em até 5 dias úteis: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português.",
+          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português.",
       },
       {
         property: "og:title",
