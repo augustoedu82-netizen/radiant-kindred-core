@@ -332,7 +332,7 @@ function Index() {
       <section className="mx-auto max-w-6xl px-5 py-20">
         <div className="max-w-2xl">
           <span className="eyebrow">Quem já destravou</span>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Brasileiros faturando em dólar</h2>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Brasileiros e latinos faturando em dólar</h2>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {testimonials.map((t) => (
