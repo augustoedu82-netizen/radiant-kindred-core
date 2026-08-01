@@ -213,7 +213,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-3">
           {[
             ["5 dias", "Média de abertura da LLC"],
-            ["US$ 250", "Serviço fixo, sem surpresa"],
+            ["US$ 280", "Serviço fixo, sem surpresa"],
             ["100%", "Processo remoto e em português"],
           ].map(([k, v]) => (
             <div key={v} className="text-center sm:text-left">
