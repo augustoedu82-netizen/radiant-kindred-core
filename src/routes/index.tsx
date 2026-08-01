@@ -305,13 +305,13 @@ function Index() {
       {/* Pricing */}
       <section id="planos" className="border-y border-border bg-surface/40">
         <div className="mx-auto max-w-5xl px-5 py-20">
-          <span className="eyebrow">Preço único</span>
+          <span className="eyebrow">Preço transparente</span>
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-            Um valor fixo, sem taxa escondida
+            Serviço fixo de US$ 250 + taxa estadual variável
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            Nada de plano confuso ou upsell no meio do caminho: um preço só, com tudo o que sua
-            empresa precisa para nascer pronta para operar.
+            Cobramos um valor único para abrir sua empresa. A taxa de registro é paga diretamente ao
+            estado escolhido e varia conforme o local — você escolhe o que faz sentido para o negócio.
           </p>
 
           <div className="surface-card mt-12 grid gap-10 p-8 sm:p-12 lg:grid-cols-[0.85fr_1fr]">
@@ -321,7 +321,7 @@ function Index() {
               </span>
               <p className="mt-6 font-display text-6xl font-extrabold leading-none">US$ 250</p>
               <p className="mt-2 text-sm text-muted-foreground">
-                pagamento único + taxas do estado
+                taxa fixa do DestravaUSA + taxa do estado
               </p>
               <div className="mt-6 flex items-start gap-3 rounded-xl bg-primary/10 p-4">
                 <ShieldCheck className="mt-0.5 size-5 shrink-0 text-primary" />
@@ -344,6 +344,39 @@ function Index() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* State fee breakdown */}
+          <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface/60">
+            <div className="grid border-b border-border px-6 py-4 sm:grid-cols-[1fr_auto_auto]">
+              <span className="text-sm font-semibold">Estado</span>
+              <span className="hidden text-right text-sm font-semibold sm:block">Taxa estadual*</span>
+              <span className="hidden text-right text-sm font-semibold sm:block">Total aproximado</span>
+            </div>
+            {[
+              { name: "Wyoming", state: "US$ 102", total: "US$ 352" },
+              { name: "Novo México", state: "US$ 50", total: "US$ 300" },
+              { name: "Flórida", state: "US$ 125", total: "US$ 375" },
+              { name: "Delaware", state: "US$ 110", total: "US$ 360" },
+            ].map((s) => (
+              <div
+                key={s.name}
+                className="grid items-center gap-2 border-b border-border px-6 py-4 last:border-b-0 sm:grid-cols-[1fr_auto_auto]"
+              >
+                <span className="font-medium">{s.name}</span>
+                <div className="flex justify-between gap-6 sm:block sm:text-right">
+                  <span className="text-sm text-muted-foreground sm:hidden">Taxa estadual:</span>
+                  <span className="text-sm">{s.state}</span>
+                </div>
+                <div className="flex justify-between gap-6 sm:block sm:text-right">
+                  <span className="text-sm text-muted-foreground sm:hidden">Total:</span>
+                  <span className="text-sm font-semibold text-primary">{s.total}</span>
+                </div>
+              </div>
+            ))}
+            <p className="px-6 py-4 text-xs text-muted-foreground">
+              *Valores aproximados e pagos diretamente ao estado. Podem sofrer reajustes sem aviso prévio.
+            </p>
           </div>
         </div>
       </section>
