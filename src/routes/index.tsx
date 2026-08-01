@@ -81,10 +81,10 @@ const offerFeatures = [
 ];
 
 const stateFees = [
-  { name: "Wyoming", state: "US$ 102", total: "US$ 352" },
-  { name: "Novo México", state: "US$ 50", total: "US$ 300" },
-  { name: "Flórida", state: "US$ 125", total: "US$ 375" },
-  { name: "Delaware", state: "US$ 110", total: "US$ 360" },
+  { name: "Wyoming", state: "US$ 102", total: "US$ 382" },
+  { name: "Novo México", state: "US$ 50", total: "US$ 330" },
+  { name: "Flórida", state: "US$ 125", total: "US$ 405" },
+  { name: "Delaware", state: "US$ 110", total: "US$ 390" },
 ];
 
 const testimonials = [
