@@ -42,7 +42,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const WHATSAPP = "https://wa.me/5527998549048";
+const WHATSAPP = "https://wa.me/18572924040";
 
 const steps = [
   { n: "1", t: "Você envia seus dados", d: "Passaporte, endereço e nome desejado da empresa. Leva 10 minutos." },
