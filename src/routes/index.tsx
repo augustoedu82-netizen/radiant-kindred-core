@@ -89,19 +89,14 @@ const stateFees = [
 
 const testimonials = [
   {
-    n: "Rafael M.",
-    r: "E-commerce",
-    q: "Abri a LLC em uma semana e recebi o EIN sem dor de cabeça. Hoje fatura em dólar direto na Mercury.",
+    n: "Martinelli & Co LLC",
+    r: "E-commerce global",
+    q: "Criei minha empresa em Wyoming para operar no e-commerce global. O Eduardo fez todo o processo comigo, do registro ao EIN, e foi o menor custo que encontrei para abrir LLC nos EUA.",
   },
   {
-    n: "Juliana P.",
-    r: "Marketing digital",
-    q: "O que me travava era a burocracia em inglês. Eles resolveram tudo e explicaram cada passo em português.",
-  },
-  {
-    n: "Diego A.",
-    r: "Dev freelancer",
-    q: "Preço claro, sem surpresa: paguei o serviço e a taxa do estado. Melhor custo que encontrei.",
+    n: "Juan Arango Ramirez",
+    r: "Juan Services LLC",
+    q: "Tenho uma empresa de pintura e construção em Massachusetts. O Eduardo me ajudou do início ao fim: da criação da LLC ao EIN e ao annual report. Tudo em português e sem dor de cabeça.",
   },
 ];
 
