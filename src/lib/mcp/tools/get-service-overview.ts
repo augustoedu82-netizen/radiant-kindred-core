@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 import { FAQ, INCLUDED, PROCESS_STEPS, SERVICE_FEE_USD, STATES } from "../data";
 
 export default defineTool({
@@ -7,6 +8,17 @@ export default defineTool({
   description:
     "Retorna a oferta da DestravaUSA: preço fixo do serviço, o que está incluído, etapas do processo e prazo estimado.",
   inputSchema: {},
+  outputSchema: {
+    brand: z.string(),
+    summary: z.string(),
+    serviceFeeUsd: z.number(),
+    pricingModel: z.string(),
+    timeline: z.string(),
+    included: z.array(z.string()),
+    steps: z.array(z.string()),
+    states: z.array(z.string()),
+    faqCount: z.number(),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
     const overview = {

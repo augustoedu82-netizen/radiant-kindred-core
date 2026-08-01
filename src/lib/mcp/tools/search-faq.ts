@@ -10,6 +10,11 @@ export default defineTool({
   inputSchema: {
     query: z.string().optional().describe("Termo de busca em português, por exemplo 'imposto' ou 'prazo'."),
   },
+  outputSchema: {
+    query: z.string().nullable(),
+    count: z.number(),
+    items: z.array(z.object({ question: z.string(), answer: z.string() })),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ query }) => {
     const term = query?.trim().toLowerCase();

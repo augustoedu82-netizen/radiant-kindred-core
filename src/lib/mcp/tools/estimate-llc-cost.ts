@@ -11,6 +11,14 @@ export default defineTool({
   inputSchema: {
     state: z.string().describe("Nome ou slug do estado: Wyoming, Novo México, Flórida ou Delaware."),
   },
+  outputSchema: {
+    state: z.string(),
+    serviceFeeUsd: z.number(),
+    stateFeeUsd: z.number(),
+    totalUsd: z.number(),
+    note: z.string(),
+    disclaimer: z.string(),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ state }) => {
     const match = findState(state);
