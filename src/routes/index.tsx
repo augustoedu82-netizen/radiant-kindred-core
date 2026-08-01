@@ -120,7 +120,7 @@ const faqs = [
   },
   {
     q: "Em quanto tempo a empresa fica pronta?",
-    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com EIN emitido, o processo completo leva de 5 a 20 dias úteis, dependendo do IRS.",
+    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com EIN emitido, o processo completo leva até 6 dias úteis, dependendo do estado e da fila do IRS.",
   },
   {
     q: "Consigo abrir conta bancária de verdade?",
