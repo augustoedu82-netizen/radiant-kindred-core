@@ -363,7 +363,7 @@ function Index() {
           <div className="max-w-2xl">
             <span className="eyebrow">Preço transparente</span>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Serviço fixo de US$ 250 + taxa estadual variável
+              Serviço fixo de US$ 280 + taxa estadual variável
             </h2>
             <p className="mt-4 text-muted-foreground">
               Cobramos um valor único para abrir sua empresa. A taxa de registro é paga
