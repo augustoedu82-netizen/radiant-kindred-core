@@ -212,7 +212,7 @@ function Index() {
       <section className="border-y border-border bg-surface">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-3">
           {[
-            ["6 dias", "Máximo após aprovação do estado"],
+            ["6 dias úteis", "Máximo após aprovação do estado"],
             ["US$ 280", "Serviço fixo, sem surpresa"],
             ["100%", "Processo remoto e em português"],
           ].map(([k, v]) => (
