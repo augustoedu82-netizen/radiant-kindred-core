@@ -168,7 +168,7 @@ function Index() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               LLC registrada, EIN emitido, endereço americano e conta bancária. 100% remoto,
-              serviço fixo de US$ 250 + taxa do estado escolhido. Suporte humano em português
+              serviço fixo de US$ 280 + taxa do estado escolhido. Suporte humano em português
               do início ao fim.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
