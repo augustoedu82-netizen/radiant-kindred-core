@@ -1,0 +1,260 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "destrava-usos",
+      "version": "0.1.0",
+      "title": "Destrava Usos"
+    },
+    "tools": [
+      {
+        "name": "get_service_overview",
+        "title": "Visão geral do serviço",
+        "description": "Retorna a oferta da DestravaUSA: preço fixo do serviço, o que está incluído, etapas do processo e prazo estimado.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "brand": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "serviceFeeUsd": {
+              "type": "number"
+            },
+            "pricingModel": {
+              "type": "string"
+            },
+            "timeline": {
+              "type": "string"
+            },
+            "included": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "states": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "faqCount": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "brand",
+            "summary",
+            "serviceFeeUsd",
+            "pricingModel",
+            "timeline",
+            "included",
+            "steps",
+            "states",
+            "faqCount"
+          ]
+        }
+      },
+      {
+        "name": "list_states",
+        "title": "Estados disponíveis",
+        "description": "Lista os estados americanos onde a DestravaUSA abre LLC, com a taxa oficial do estado, o total estimado e observações de cada um.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "serviceFeeUsd": {
+              "type": "number"
+            },
+            "states": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "stateFeeUsd": {
+                    "type": "number"
+                  },
+                  "totalUsd": {
+                    "type": "number"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "slug",
+                  "stateFeeUsd",
+                  "totalUsd",
+                  "note"
+                ]
+              }
+            }
+          },
+          "required": [
+            "serviceFeeUsd",
+            "states"
+          ]
+        }
+      },
+      {
+        "name": "estimate_llc_cost",
+        "title": "Estimar custo da LLC",
+        "description": "Calcula o custo estimado de abrir uma LLC em um estado específico: serviço fixo da DestravaUSA mais a taxa oficial do estado.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "state": {
+              "type": "string",
+              "description": "Nome ou slug do estado: Wyoming, Novo México, Flórida ou Delaware."
+            }
+          },
+          "required": [
+            "state"
+          ]
+        },
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "state": {
+              "type": "string"
+            },
+            "serviceFeeUsd": {
+              "type": "number"
+            },
+            "stateFeeUsd": {
+              "type": "number"
+            },
+            "totalUsd": {
+              "type": "number"
+            },
+            "note": {
+              "type": "string"
+            },
+            "disclaimer": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "state",
+            "serviceFeeUsd",
+            "stateFeeUsd",
+            "totalUsd",
+            "note",
+            "disclaimer"
+          ]
+        }
+      },
+      {
+        "name": "search_faq",
+        "title": "Buscar no FAQ",
+        "description": "Busca nas perguntas frequentes da DestravaUSA (taxas, visto, impostos, prazos, conta bancária). Sem termo de busca, retorna todo o FAQ.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "description": "Termo de busca em português, por exemplo 'imposto' ou 'prazo'.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "count": {
+              "type": "number"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "question": {
+                    "type": "string"
+                  },
+                  "answer": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "question",
+                  "answer"
+                ]
+              }
+            }
+          },
+          "required": [
+            "query",
+            "count",
+            "items"
+          ]
+        }
+      }
+    ]
+  }
+}
