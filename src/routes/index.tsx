@@ -81,10 +81,10 @@ const offerFeatures = [
 ];
 
 const stateFees = [
-  { name: "Wyoming", state: "US$ 102", total: "US$ 352" },
-  { name: "Novo México", state: "US$ 50", total: "US$ 300" },
-  { name: "Flórida", state: "US$ 125", total: "US$ 375" },
-  { name: "Delaware", state: "US$ 110", total: "US$ 360" },
+  { name: "Wyoming", state: "US$ 102", total: "US$ 382" },
+  { name: "Novo México", state: "US$ 50", total: "US$ 330" },
+  { name: "Flórida", state: "US$ 125", total: "US$ 405" },
+  { name: "Delaware", state: "US$ 110", total: "US$ 390" },
 ];
 
 const testimonials = [
@@ -108,7 +108,7 @@ const testimonials = [
 const faqs = [
   {
     q: "O que é a taxa do estado e por que varia?",
-    a: "Cada estado americano cobra uma taxa oficial para registrar sua LLC. Esse valor é pago diretamente ao estado — não fica com a DestravaUSA — e varia: Wyoming ~US$ 102, Novo México ~US$ 50, Flórida ~US$ 125, Delaware ~US$ 110. Nosso serviço fixo é de US$ 250.",
+    a: "Cada estado americano cobra uma taxa oficial para registrar sua LLC. Esse valor é pago diretamente ao estado — não fica com a DestravaUSA — e varia: Wyoming ~US$ 102, Novo México ~US$ 50, Flórida ~US$ 125, Delaware ~US$ 110. Nosso serviço fixo é de US$ 280.",
   },
   {
     q: "Preciso ir aos EUA ou ter visto?",
@@ -168,7 +168,7 @@ function Index() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               LLC registrada, EIN emitido, endereço americano e conta bancária. 100% remoto,
-              serviço fixo de US$ 250 + taxa do estado escolhido. Suporte humano em português
+              serviço fixo de US$ 280 + taxa do estado escolhido. Suporte humano em português
               do início ao fim.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -213,7 +213,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-3">
           {[
             ["5 dias", "Média de abertura da LLC"],
-            ["US$ 250", "Serviço fixo, sem surpresa"],
+            ["US$ 280", "Serviço fixo, sem surpresa"],
             ["100%", "Processo remoto e em português"],
           ].map(([k, v]) => (
             <div key={v} className="text-center sm:text-left">
@@ -363,7 +363,7 @@ function Index() {
           <div className="max-w-2xl">
             <span className="eyebrow">Preço transparente</span>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Serviço fixo de US$ 250 + taxa estadual variável
+              Serviço fixo de US$ 280 + taxa estadual variável
             </h2>
             <p className="mt-4 text-muted-foreground">
               Cobramos um valor único para abrir sua empresa. A taxa de registro é paga
@@ -376,7 +376,7 @@ function Index() {
               <span className="w-fit rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
                 Tudo incluído
               </span>
-              <p className="mt-6 font-display text-6xl font-extrabold leading-none text-primary">US$ 250</p>
+              <p className="mt-6 font-display text-6xl font-extrabold leading-none text-primary">US$ 280</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 taxa fixa do DestravaUSA + taxa do estado
               </p>
