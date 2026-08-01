@@ -108,7 +108,7 @@ const testimonials = [
 const faqs = [
   {
     q: "O que é a taxa do estado e por que varia?",
-    a: "Cada estado americano cobra uma taxa oficial para registrar sua LLC. Esse valor é pago diretamente ao estado — não fica com a DestravaUSA — e varia: Wyoming ~US$ 102, Novo México ~US$ 50, Flórida ~US$ 125, Delaware ~US$ 110. Nosso serviço fixo é de US$ 250.",
+    a: "Cada estado americano cobra uma taxa oficial para registrar sua LLC. Esse valor é pago diretamente ao estado — não fica com a DestravaUSA — e varia: Wyoming ~US$ 102, Novo México ~US$ 50, Flórida ~US$ 125, Delaware ~US$ 110. Nosso serviço fixo é de US$ 280.",
   },
   {
     q: "Preciso ir aos EUA ou ter visto?",
