@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "LLC nos EUA em até 5 dias úteis: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português.",
+          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português.",
       },
       {
         property: "og:title",
@@ -120,7 +120,7 @@ const faqs = [
   },
   {
     q: "Em quanto tempo a empresa fica pronta?",
-    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com EIN emitido, o processo completo leva de 5 a 20 dias úteis, dependendo do IRS.",
+    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com EIN emitido, o processo completo leva até 6 dias úteis, dependendo do estado e da fila do IRS.",
   },
   {
     q: "Consigo abrir conta bancária de verdade?",
@@ -212,7 +212,7 @@ function Index() {
       <section className="border-y border-border bg-surface">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-3">
           {[
-            ["5 dias", "Média de abertura da LLC"],
+            ["6 dias", "Máximo após aprovação do estado"],
             ["US$ 280", "Serviço fixo, sem surpresa"],
             ["100%", "Processo remoto e em português"],
           ].map(([k, v]) => (
