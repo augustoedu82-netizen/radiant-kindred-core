@@ -67,42 +67,17 @@ const includes = [
 
 const banks = ["Mercury", "Relay", "Wise", "Payoneer", "Revolut", "Lili"];
 
-const plans = [
-  {
-    name: "Start",
-    price: "US$ 349",
-    note: "+ taxas do estado",
-    d: "Para quem só precisa da empresa aberta e funcionando.",
-    features: ["Abertura da LLC", "EIN (Tax ID)", "Registered agent 12 meses", "Operating agreement", "Suporte no WhatsApp"],
-    cta: "Começar agora",
-    highlight: false,
-  },
-  {
-    name: "Operação",
-    price: "US$ 599",
-    note: "+ taxas do estado",
-    d: "O plano completo: empresa, endereço, banco e compliance.",
-    features: [
-      "Tudo do Start",
-      "Endereço comercial nos EUA",
-      "Correspondência digitalizada",
-      "Aplicação bancária assistida",
-      "Consultoria tributária anual",
-      "Calendário de compliance",
-    ],
-    cta: "Quero o completo",
-    highlight: true,
-  },
-  {
-    name: "Já tenho LLC",
-    price: "US$ 249",
-    note: "por ano",
-    d: "Sua empresa existe, mas está sem manutenção fiscal.",
-    features: ["Diagnóstico da empresa", "Regularização de pendências", "Form 5472 e annual report", "Troca de registered agent"],
-    cta: "Regularizar",
-    highlight: false,
-  },
+const offerFeatures = [
+  "Abertura da LLC no estado escolhido",
+  "EIN (Tax ID) incluído",
+  "Registered agent grátis por 1 ano",
+  "Operating agreement e documentos oficiais",
+  "Endereço comercial nos EUA",
+  "Aplicação bancária assistida (Mercury, Relay, Wise)",
+  "Orientação de compliance e declaração anual",
+  "Suporte em português no WhatsApp",
 ];
+
 
 const faqs = [
   {
