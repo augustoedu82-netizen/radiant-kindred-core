@@ -27,12 +27,12 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "DestravaUSA — Sua empresa americana em dias, não meses",
+        content: "DestravaUSA — Abra sua empresa nos EUA sem sair do Brasil",
       },
       {
         property: "og:description",
         content:
-          "Abertura de LLC, EIN, endereço nos EUA, conta bancária e compliance anual. Processo remoto com suporte em português.",
+          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

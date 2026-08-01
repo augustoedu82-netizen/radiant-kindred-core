@@ -80,6 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "DestravaUSA" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { title: "DestravaUSA — Abra sua empresa nos EUA sem sair do Brasil" },
+      { property: "og:title", content: "DestravaUSA — Abra sua empresa nos EUA sem sair do Brasil" },
+      { name: "twitter:title", content: "DestravaUSA — Abra sua empresa nos EUA sem sair do Brasil" },
+      { name: "description", content: "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português." },
+      { property: "og:description", content: "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português." },
+      { name: "twitter:description", content: "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/1ba33e34-be62-4b8c-a73e-4f7bf0c84f47" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/1ba33e34-be62-4b8c-a73e-4f7bf0c84f47" },
     ],
     links: [
       {
@@ -92,7 +100,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
 
