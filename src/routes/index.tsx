@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   ArrowRight,
   Building2,
@@ -8,12 +9,17 @@ import {
   Globe2,
   Landmark,
   Mail,
+  MapPin,
+  Quote,
   Receipt,
   ShieldCheck,
   Star,
   Timer,
 } from "lucide-react";
 import heroImage from "@/assets/hero-llc-light.jpg";
+import storyBucket from "@/assets/story-bucket.jpg";
+import storyTruck from "@/assets/story-truck.jpg";
+import storyLadder from "@/assets/story-ladder.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -123,6 +129,69 @@ const faqs = [
   },
 ];
 
+function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          io.unobserve(el);
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -80px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="soft-card overflow-hidden transition-colors duration-300 hover:bg-accent/60">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left font-display text-base font-semibold"
+      >
+        {q}
+        <ArrowRight
+          className={`size-4 shrink-0 text-primary transition-transform duration-300 ${open ? "rotate-90" : ""}`}
+        />
+      </button>
+      <div
+        className="grid transition-[grid-template-rows] duration-300 ease-out"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+      >
+        <div className="overflow-hidden">
+          <p className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">{a}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl">
@@ -137,6 +206,7 @@ function Nav() {
           <a className="transition-colors hover:text-primary" href="#como-funciona">Como funciona</a>
           <a className="transition-colors hover:text-primary" href="#servicos">Serviços</a>
           <a className="transition-colors hover:text-primary" href="#estados">Estados</a>
+          <a className="transition-colors hover:text-primary" href="#historia">Minha história</a>
           <a className="transition-colors hover:text-primary" href="#planos">Preço</a>
           <a className="transition-colors hover:text-primary" href="#faq">Dúvidas</a>
         </nav>
@@ -180,17 +250,17 @@ function Index() {
               ))}
             </ul>
           </div>
-          <div className="relative">
-            <div className="soft-card p-6 sm:p-8">
+          <div className="group relative">
+            <div className="soft-card overflow-hidden p-6 transition-shadow duration-300 hover:shadow-card sm:p-8">
               <img
                 src={heroImage}
                 alt="Notebook com painel da empresa, certificado de LLC americana, passaporte e cartão bancário"
                 width={1280}
                 height={1120}
-                className="w-full"
+                className="w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
             </div>
-            <div className="surface-card absolute -bottom-6 left-2 flex items-center gap-3 px-4 py-3 sm:left-6">
+            <div className="surface-card absolute -bottom-6 left-2 flex items-center gap-3 px-4 py-3 transition-transform duration-300 hover:-translate-y-1 sm:left-6">
               <span className="grid size-9 place-items-center rounded-full bg-accent text-primary">
                 <Timer className="size-4" />
               </span>
@@ -205,7 +275,7 @@ function Index() {
 
       {/* Trust bar */}
       <section className="border-y border-border bg-surface">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-3">
+        <Reveal className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-3">
           {[
             ["6 dias úteis", "Máximo após aprovação do estado"],
             ["US$ 280", "Serviço fixo, sem surpresa"],
@@ -216,59 +286,70 @@ function Index() {
               <p className="mt-1 text-sm text-muted-foreground">{v}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </section>
 
       {/* Steps */}
       <section id="como-funciona" className="mx-auto max-w-6xl px-5 py-20">
-        <div className="max-w-2xl">
-          <span className="eyebrow">Como funciona</span>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-            Sua empresa no exterior em dias, não meses
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Cuidamos de toda a burocracia. Você acompanha cada etapa e recebe os documentos
-            oficiais digitalizados.
-          </p>
-        </div>
-        <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s) => (
-            <li key={s.n} className="soft-card p-6">
-              <span className="grid size-9 place-items-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground">
-                {s.n}
-              </span>
-              <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-            </li>
-          ))}
-        </ol>
+        <Reveal>
+          <div className="max-w-2xl">
+            <span className="eyebrow">Como funciona</span>
+            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+              Sua empresa no exterior em dias, não meses
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Cuidamos de toda a burocracia. Você acompanha cada etapa e recebe os documentos
+              oficiais digitalizados.
+            </p>
+          </div>
+          <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map((s) => (
+              <li
+                key={s.n}
+                className="soft-card group p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card"
+              >
+                <span className="grid size-9 place-items-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground transition-transform duration-300 group-hover:scale-110">
+                  {s.n}
+                </span>
+                <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
       </section>
 
       {/* Included */}
       <section id="servicos" className="border-y border-border bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-20">
-          <div className="max-w-2xl">
-            <span className="eyebrow">Tudo incluído</span>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Uma operação americana completa, não só um papel registrado
-            </h2>
-          </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {includes.map((i) => (
-              <article key={i.t} className="surface-card p-6">
-                <span className="grid size-11 place-items-center rounded-2xl bg-accent text-primary">
-                  <i.icon className="size-5" />
-                </span>
-                <h3 className="mt-4 text-lg font-semibold">{i.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{i.d}</p>
-              </article>
-            ))}
-          </div>
+          <Reveal>
+            <div className="max-w-2xl">
+              <span className="eyebrow">Tudo incluído</span>
+              <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+                Uma operação americana completa, não só um papel registrado
+              </h2>
+            </div>
+            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {includes.map((i) => (
+                <article
+                  key={i.t}
+                  className="surface-card group p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-glow"
+                >
+                  <span className="grid size-11 place-items-center rounded-2xl bg-accent text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+                    <i.icon className="size-5" />
+                  </span>
+                  <h3 className="mt-4 text-lg font-semibold">{i.t}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{i.d}</p>
+                </article>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Banking */}
-      <section className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center">
+      <section>
+        <Reveal className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center">
         <div>
           <span className="eyebrow">Conta bancária</span>
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Receba em dólar com conta americana</h2>
@@ -296,65 +377,147 @@ function Index() {
           {banks.map((b) => (
             <div
               key={b}
-              className="soft-card grid place-items-center gap-2 px-4 py-7 text-center text-sm font-semibold"
+              className="soft-card group grid place-items-center gap-2 px-4 py-7 text-center text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:bg-accent"
             >
-              <CreditCard className="size-5 text-primary" />
+              <CreditCard className="size-5 text-primary transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-6" />
               {b}
             </div>
           ))}
         </div>
+        </Reveal>
       </section>
 
       {/* States */}
       <section id="estados" className="border-y border-border bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-20">
+          <Reveal>
+            <div className="max-w-2xl">
+              <span className="eyebrow">Onde registrar</span>
+              <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+                Escolhemos o estado certo para o seu negócio
+              </h2>
+            </div>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {states.map((s) => (
+                <article
+                  key={s.name}
+                  className="surface-card group flex flex-col gap-3 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-glow"
+                >
+                  <h3 className="font-display text-xl font-bold">{s.name}</h3>
+                  <span className="w-fit rounded-full bg-accent px-3 py-1 text-xs font-semibold text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                    {s.tag}
+                  </span>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+                </article>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Minha história */}
+      <section id="historia" className="border-y border-border bg-surface">
+        <div className="mx-auto max-w-6xl px-5 py-20">
+          <Reveal>
           <div className="max-w-2xl">
-            <span className="eyebrow">Onde registrar</span>
+            <span className="eyebrow">Quem está por trás da DestravaUSA</span>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Escolhemos o estado certo para o seu negócio
+              Aprendi isso na prática, com a bota suja de tinta
             </h2>
           </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {states.map((s) => (
-              <article key={s.name} className="surface-card flex flex-col gap-3 p-6">
-                <h3 className="font-display text-xl font-bold">{s.name}</h3>
-                <span className="w-fit rounded-full bg-accent px-3 py-1 text-xs font-semibold text-primary">
-                  {s.tag}
-                </span>
-                <p className="text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-              </article>
-            ))}
+
+          <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-start">
+            <div className="space-y-5 text-muted-foreground">
+              <p className="leading-relaxed">
+                Cheguei nos Estados Unidos com <strong className="text-foreground">18 anos</strong>, sem
+                falar inglês fluente e sem rede de contatos. Comecei trabalhando no que aparecia — inclusive
+                traduzindo instruções em inglês para outros brasileiros que, como eu, trabalhavam como
+                subcontratados numa empresa americana de pintura, recebendo por hora.
+              </p>
+              <p className="leading-relaxed">
+                Foi o meu próprio patrão — o contractor americano pra quem eu trabalhava — quem enxergou algo
+                em mim e me deu a oportunidade de assumir a empresa como dono. Foi ele também quem me ensinou
+                a abrir minha LLC sozinho, numa época em que eu via gente cobrando <strong className="text-foreground">US$ 500</strong> só
+                pra fazer esse registro.
+              </p>
+              <p className="leading-relaxed">
+                A partir daí, comecei a ajudar amigos da construção civil a abrir empresa, entregar o imposto
+                anual e resolver a burocracia que quase ninguém explica direito em português.
+              </p>
+              <div className="soft-card flex items-start gap-4 p-5">
+                <Quote className="mt-0.5 size-6 shrink-0 text-primary" />
+                <p className="text-sm font-medium leading-relaxed text-foreground">
+                  Foi assim que nasceu a DestravaUSA: pra fazer por outros brasileiros o que meu patrão fez
+                  por mim — abrir caminho, com preço justo e sem enrolação.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 pt-2 text-sm text-muted-foreground">
+                <MapPin className="size-4 text-primary" />
+                Massachusetts, EUA
+              </div>
+            </div>
+
+            <div className="group/gallery grid grid-cols-2 gap-4">
+              <div className="group/photo col-span-2 overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
+                <img
+                  src={storyLadder}
+                  alt="Eduardo trabalhando em obra de pintura nos EUA, no início da carreira"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
+                />
+              </div>
+              <div className="group/photo overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
+                <img
+                  src={storyBucket}
+                  alt="Eduardo em um trabalho de pintura residencial nos EUA"
+                  className="aspect-square w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
+                />
+              </div>
+              <div className="group/photo overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
+                <img
+                  src={storyTruck}
+                  alt="Caminhonete da empresa de pintura de Eduardo nos EUA"
+                  className="aspect-square w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
+                />
+              </div>
+            </div>
           </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Testimonials */}
       <section className="mx-auto max-w-6xl px-5 py-20">
-        <div className="max-w-2xl">
-          <span className="eyebrow">Quem já destravou</span>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Brasileiros e latinos faturando em dólar</h2>
-        </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {testimonials.map((t) => (
-            <figure key={t.n} className="soft-card flex h-full flex-col gap-4 p-6">
-              <div className="flex gap-1 text-primary">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" />
-                ))}
-              </div>
-              <blockquote className="text-sm leading-relaxed text-muted-foreground">“{t.q}”</blockquote>
-              <figcaption className="mt-auto text-sm font-semibold">
-                {t.n}
-                <span className="block text-xs font-normal text-muted-foreground">{t.r}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <Reveal>
+          <div className="max-w-2xl">
+            <span className="eyebrow">Quem já destravou</span>
+            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Brasileiros e latinos faturando em dólar</h2>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {testimonials.map((t) => (
+              <figure
+                key={t.n}
+                className="soft-card flex h-full flex-col gap-4 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card"
+              >
+                <div className="flex gap-1 text-primary">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="size-4 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="text-sm leading-relaxed text-muted-foreground">“{t.q}”</blockquote>
+                <figcaption className="mt-auto text-sm font-semibold">
+                  {t.n}
+                  <span className="block text-xs font-normal text-muted-foreground">{t.r}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* Pricing */}
       <section id="planos" className="border-y border-border bg-surface">
         <div className="mx-auto max-w-5xl px-5 py-20">
+          <Reveal>
           <div className="max-w-2xl">
             <span className="eyebrow">Preço transparente</span>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
@@ -410,7 +573,7 @@ function Index() {
             {stateFees.map((s) => (
               <div
                 key={s.name}
-                className="grid items-center gap-2 border-b border-border px-6 py-4 last:border-b-0 sm:grid-cols-[1fr_auto_auto]"
+                className="grid items-center gap-2 border-b border-border px-6 py-4 transition-colors duration-200 last:border-b-0 hover:bg-surface sm:grid-cols-[1fr_auto_auto]"
               >
                 <span className="font-medium">{s.name}</span>
                 <div className="flex justify-between gap-6 sm:block sm:text-right">
@@ -427,47 +590,46 @@ function Index() {
               *Valores aproximados e pagos diretamente ao estado. Podem sofrer reajustes sem aviso prévio.
             </p>
           </div>
+          </Reveal>
         </div>
       </section>
 
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-3xl px-5 py-20">
-        <span className="eyebrow">Dúvidas frequentes</span>
-        <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Antes de começar</h2>
-        <div className="mt-10 space-y-3">
-          {faqs.map((f) => (
-            <details key={f.q} className="group soft-card px-6 py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-base font-semibold">
-                {f.q}
-                <ArrowRight className="size-4 shrink-0 text-primary transition-transform group-open:rotate-90" />
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
-            </details>
-          ))}
-        </div>
+        <Reveal>
+          <span className="eyebrow">Dúvidas frequentes</span>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Antes de começar</h2>
+          <div className="mt-10 space-y-3">
+            {faqs.map((f) => (
+              <FaqItem key={f.q} q={f.q} a={f.a} />
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* Final CTA */}
       <section className="mx-auto max-w-6xl px-5 pb-24">
-        <div className="flex flex-col items-start gap-6 rounded-4xl bg-ink p-10 text-ink-foreground sm:p-14">
-          <h2 className="max-w-2xl text-balance text-3xl font-bold sm:text-4xl">
-            Destrave sua operação nos EUA ainda esta semana
-          </h2>
-          <p className="max-w-xl text-ink-foreground/75">
-            Conversa sem compromisso: entendemos seu negócio e indicamos a estrutura certa.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <a href={WHATSAPP} className="btn-primary">
-              Falar no WhatsApp <ArrowRight className="size-4" />
-            </a>
-            <a
-              href="#planos"
-              className="inline-flex items-center gap-2 rounded-full border border-ink-foreground/25 px-7 py-[0.9rem] text-sm font-semibold"
-            >
-              Ver o que está incluído
-            </a>
+        <Reveal>
+          <div className="flex flex-col items-start gap-6 rounded-4xl bg-ink p-10 text-ink-foreground sm:p-14">
+            <h2 className="max-w-2xl text-balance text-3xl font-bold sm:text-4xl">
+              Destrave sua operação nos EUA ainda esta semana
+            </h2>
+            <p className="max-w-xl text-ink-foreground/75">
+              Conversa sem compromisso: entendemos seu negócio e indicamos a estrutura certa.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a href={WHATSAPP} className="btn-primary">
+                Falar no WhatsApp <ArrowRight className="size-4" />
+              </a>
+              <a
+                href="#planos"
+                className="inline-flex items-center gap-2 rounded-full border border-ink-foreground/25 px-7 py-[0.9rem] text-sm font-semibold transition-colors duration-300 hover:border-ink-foreground/60 hover:bg-ink-foreground/10"
+              >
+                Ver o que está incluído
+              </a>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <footer className="border-t border-border bg-surface">
