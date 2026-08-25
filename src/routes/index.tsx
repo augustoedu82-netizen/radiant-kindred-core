@@ -142,7 +142,7 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setVisible(true);
           io.unobserve(el);
         }
