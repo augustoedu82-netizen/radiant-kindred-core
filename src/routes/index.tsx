@@ -70,7 +70,7 @@ const includes = [
   { icon: Mail, t: "Endereço nos EUA", d: "Endereço comercial real, com correspondência digitalizada." },
   { icon: ShieldCheck, t: "Registered agent", d: "Agente registrado no estado por 12 meses, obrigatório por lei." },
   { icon: Landmark, t: "Suporte bancário", d: "Mercury, Relay, Wise e Payoneer: preparamos toda a aplicação." },
-  { icon: Receipt, t: "Compliance anual", d: "Calendário fiscal, Form 5472 e consultoria tributária inclusa." },
+  { icon: Receipt, t: "Compliance anual", d: "Orientação de calendário fiscal e envio do Form 5472." },
 ];
 
 const banks = ["Mercury", "Relay", "Wise", "Payoneer", "Revolut", "Lili"];
