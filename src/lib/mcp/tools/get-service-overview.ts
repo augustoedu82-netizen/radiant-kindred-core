@@ -27,7 +27,7 @@ export default defineTool({
         "Abertura de LLC nos EUA para brasileiros, 100% remota, sem visto, com EIN e apoio bancário.",
       serviceFeeUsd: SERVICE_FEE_USD,
       pricingModel: "Serviço fixo de US$ 280 + taxa estadual variável paga diretamente ao estado.",
-      timeline: "Até 6 dias úteis, dependendo do estado e da fila do IRS.",
+      timeline: "Entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
       included: INCLUDED,
       steps: PROCESS_STEPS,
       states: STATES.map((s) => s.name),

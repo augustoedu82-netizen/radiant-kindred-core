@@ -18,7 +18,7 @@ import {
   Timer,
 } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import heroImage from "@/assets/hero-llc-light.jpg";
+import heroImage from "@/assets/hero-founder.jpg";
 import storyBucket from "@/assets/story-bucket.jpg";
 import storyTruck from "@/assets/story-truck.jpg";
 import storyLadder from "@/assets/story-ladder.jpg";
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
+          "LLC nos EUA em 5 a 10 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
       },
       {
         property: "og:title",
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
+          "LLC nos EUA em 5 a 10 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -178,7 +178,7 @@ const faqs = [
   },
   {
     q: "Em quanto tempo a empresa fica pronta?",
-    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com EIN emitido, o processo completo leva até 6 dias úteis, dependendo do estado e da fila do IRS.",
+    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com EIN emitido, o processo completo leva entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
   },
   {
     q: "Consigo abrir conta bancária de verdade?",
@@ -347,10 +347,10 @@ function Index() {
             <div className="soft-card overflow-hidden p-6 transition-shadow duration-300 hover:shadow-card sm:p-8">
               <img
                 src={heroImage}
-                alt="Notebook com painel da empresa, certificado de LLC americana, passaporte e cartão bancário"
-                width={1280}
-                height={1120}
-                className="w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                alt="Empreendedor brasileiro sorridente em frente ao seu negócio nos EUA, com a bandeira americana ao fundo"
+                width={1152}
+                height={928}
+                className="w-full rounded-2xl object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
             </div>
             <div className="surface-card absolute -bottom-6 left-2 flex items-center gap-3 px-4 py-3 transition-transform duration-300 hover:-translate-y-1 sm:left-6">
@@ -370,7 +370,7 @@ function Index() {
       <section className="border-y border-border bg-surface">
         <Reveal className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-3">
           {[
-            ["6 dias úteis", "Máximo após aprovação do estado"],
+            ["5–10 dias úteis", "Depende do estado escolhido"],
             ["US$ 280", "Serviço fixo, sem surpresa"],
             ["100%", "Processo remoto e em português"],
           ].map(([k, v]) => (
