@@ -4,16 +4,17 @@ import {
   ArrowRight,
   Building2,
   Check,
+  CheckCheck,
   CreditCard,
   FileCheck2,
   Globe2,
+  HardHat,
   Landmark,
   Mail,
   MapPin,
   Quote,
   Receipt,
   ShieldCheck,
-  Star,
   Timer,
 } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -26,20 +27,20 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "DestravaUSA — Abra sua empresa nos EUA, do Brasil ou já morando por aqui" },
+      { title: "DestravaUSA — Abra e legalize sua empresa nos EUA, morando aqui ou no Brasil" },
       {
         name: "description",
         content:
-          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana — mesmo sem SSN ou ITIN. 100% remoto, em português, para quem está no Brasil ou já mora nos EUA.",
+          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
       },
       {
         property: "og:title",
-        content: "DestravaUSA — Abra sua empresa nos EUA, do Brasil ou já morando por aqui",
+        content: "DestravaUSA — Abra e legalize sua empresa nos EUA, morando aqui ou no Brasil",
       },
       {
         property: "og:description",
         content:
-          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana — mesmo sem SSN ou ITIN. 100% remoto, em português.",
+          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -81,7 +82,22 @@ const includes = [
   { icon: Mail, t: "Endereço nos EUA", d: "Endereço comercial real, com correspondência digitalizada." },
   { icon: ShieldCheck, t: "Registered agent", d: "Agente registrado no estado por 12 meses, obrigatório por lei." },
   { icon: Landmark, t: "Suporte bancário", d: "Mercury, Relay, Wise e Payoneer: preparamos toda a aplicação." },
-  { icon: Receipt, t: "Compliance anual", d: "Orientação de calendário fiscal e envio do Form 5472." },
+  { icon: Receipt, t: "Compliance anual", d: "Te avisamos quando vence o Form 5472 (obrigatório mesmo sem lucro) e ajudamos a declarar." },
+];
+
+const audiences = [
+  {
+    icon: HardHat,
+    tag: "Já mora nos EUA",
+    t: "Construção, limpeza e serviços",
+    d: "Trabalha no trecho, com pintura, limpeza ou tá começando no leilão/flip? Formalize sua LLC, tire o EIN e comece a pegar contrato direto com construtora grande, emitir invoice profissional e parar de receber cheque na mão de terceiro.",
+  },
+  {
+    icon: Building2,
+    tag: "Empreende no Brasil",
+    t: "E-commerce, tech e criadores",
+    d: "Venda pro mundo, libere Stripe e Shopify Payments e receba em dólar numa conta americana de verdade — sem precisar de visto nem de viajar.",
+  },
 ];
 
 const banks = ["Mercury", "Relay", "Wise", "Payoneer", "Revolut", "Lili"];
@@ -244,10 +260,10 @@ function Nav() {
           Destrava<span className="text-primary">USA</span>
         </a>
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
+          <a className="transition-colors hover:text-primary" href="#historia">Minha história</a>
           <a className="transition-colors hover:text-primary" href="#como-funciona">Como funciona</a>
           <a className="transition-colors hover:text-primary" href="#servicos">Serviços</a>
           <a className="transition-colors hover:text-primary" href="#estados">Estados</a>
-          <a className="transition-colors hover:text-primary" href="#historia">Minha história</a>
           <a className="transition-colors hover:text-primary" href="#planos">Preço</a>
           <a className="transition-colors hover:text-primary" href="#faq">Dúvidas</a>
         </nav>
@@ -306,19 +322,18 @@ function Index() {
           <div>
             <span className="eyebrow">+800 empresas abertas</span>
             <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.06] sm:text-5xl lg:text-[3.4rem]">
-              Abra sua empresa nos <span className="text-primary">EUA</span> — do Brasil ou já morando por aqui
+              Abra e legalize sua empresa nos <span className="text-primary">EUA</span> — morando aqui ou no Brasil
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              LLC registrada, EIN emitido, endereço americano e conta bancária — sem precisar de
-              SSN ou ITIN. 100% remoto, serviço fixo de US$ 280 + taxa do estado escolhido.
-              Suporte humano em português do início ao fim, esteja você no Brasil ou já vivendo
-              nos EUA.
+              LLC registrada, EIN emitido e conta bancária comercial pronta — sem precisar de SSN
+              ou ITIN. Seja pra formalizar seu trabalho na construção civil e serviços nos EUA, ou
+              pra faturar em dólar direto do Brasil. 100% em português, sem complicação.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a href="#planos" className="btn-primary">
                 Abrir minha empresa <ArrowRight className="size-4" />
               </a>
-              <a href={WHATSAPP} className="btn-ghost">Falar com especialista</a>
+              <a href={WHATSAPP} className="btn-ghost">Falar direto com o Eduardo</a>
             </div>
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
               {["Sem visto ou viagem", "Mesmo sem SSN ou ITIN", "Documentos digitais", "Preço fechado"].map((f) => (
@@ -367,6 +382,105 @@ function Index() {
         </Reveal>
       </section>
 
+      {/* Para quem é */}
+      <section className="mx-auto max-w-6xl px-5 py-20">
+        <Reveal>
+          <div className="max-w-2xl">
+            <span className="eyebrow">Pra quem é</span>
+            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+              Não importa se você já tá aqui ou ainda no Brasil
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {audiences.map((a) => (
+              <article
+                key={a.t}
+                className="surface-card group p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-glow"
+              >
+                <span className="grid size-12 place-items-center rounded-2xl bg-accent text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <a.icon className="size-6" />
+                </span>
+                <span className="mt-5 block w-fit rounded-full bg-accent px-3 py-1 text-xs font-semibold text-primary">
+                  {a.tag}
+                </span>
+                <h3 className="mt-3 font-display text-xl font-bold">{a.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.d}</p>
+              </article>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Minha história */}
+      <section id="historia" className="border-y border-border bg-surface">
+        <div className="mx-auto max-w-6xl px-5 py-20">
+          <Reveal>
+          <div className="max-w-2xl">
+            <span className="eyebrow">Quem está por trás da DestravaUSA</span>
+            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+              Aprendi isso na prática, com a bota suja de tinta
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-start">
+            <div className="space-y-5 text-muted-foreground">
+              <p className="leading-relaxed">
+                Cheguei nos Estados Unidos com <strong className="text-foreground">18 anos</strong>, sem
+                falar inglês fluente e sem rede de contatos. Comecei trabalhando no que aparecia — inclusive
+                traduzindo instruções em inglês para outros brasileiros que, como eu, trabalhavam como
+                subcontratados numa empresa americana de pintura, recebendo por hora.
+              </p>
+              <p className="leading-relaxed">
+                Foi o meu próprio patrão — o contractor americano pra quem eu trabalhava — quem enxergou algo
+                em mim e me deu a oportunidade de assumir a empresa como dono. Foi ele também quem me ensinou
+                a abrir minha LLC sozinho, numa época em que eu via gente cobrando <strong className="text-foreground">US$ 500</strong> só
+                pra fazer esse registro.
+              </p>
+              <p className="leading-relaxed">
+                A partir daí, comecei a ajudar amigos da construção civil a abrir empresa, entregar o imposto
+                anual e resolver a burocracia que quase ninguém explica direito em português.
+              </p>
+              <div className="soft-card flex items-start gap-4 p-5">
+                <Quote className="mt-0.5 size-6 shrink-0 text-primary" />
+                <p className="text-sm font-medium leading-relaxed text-foreground">
+                  Foi assim que nasceu a DestravaUSA: pra fazer por outros brasileiros o que meu patrão fez
+                  por mim — abrir caminho, com preço justo e sem enrolação.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 pt-2 text-sm text-muted-foreground">
+                <MapPin className="size-4 text-primary" />
+                Massachusetts, EUA
+              </div>
+            </div>
+
+            <div className="group/gallery grid grid-cols-2 gap-4">
+              <div className="group/photo col-span-2 overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
+                <img
+                  src={storyLadder}
+                  alt="Eduardo trabalhando em obra de pintura nos EUA, no início da carreira"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
+                />
+              </div>
+              <div className="group/photo overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
+                <img
+                  src={storyBucket}
+                  alt="Eduardo em um trabalho de pintura residencial nos EUA"
+                  className="aspect-square w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
+                />
+              </div>
+              <div className="group/photo overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
+                <img
+                  src={storyTruck}
+                  alt="Caminhonete da empresa de pintura de Eduardo nos EUA"
+                  className="aspect-square w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
+                />
+              </div>
+            </div>
+          </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Steps */}
       <section id="como-funciona" className="mx-auto max-w-6xl px-5 py-20">
         <Reveal>
@@ -404,7 +518,7 @@ function Index() {
             <div className="max-w-2xl">
               <span className="eyebrow">Tudo incluído</span>
               <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-                Uma operação americana completa, não só um papel registrado
+                Não é só abrir no papel — é sair operando
               </h2>
             </div>
             <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -495,76 +609,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Minha história */}
-      <section id="historia" className="border-y border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-20">
-          <Reveal>
-          <div className="max-w-2xl">
-            <span className="eyebrow">Quem está por trás da DestravaUSA</span>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Aprendi isso na prática, com a bota suja de tinta
-            </h2>
-          </div>
-
-          <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-start">
-            <div className="space-y-5 text-muted-foreground">
-              <p className="leading-relaxed">
-                Cheguei nos Estados Unidos com <strong className="text-foreground">18 anos</strong>, sem
-                falar inglês fluente e sem rede de contatos. Comecei trabalhando no que aparecia — inclusive
-                traduzindo instruções em inglês para outros brasileiros que, como eu, trabalhavam como
-                subcontratados numa empresa americana de pintura, recebendo por hora.
-              </p>
-              <p className="leading-relaxed">
-                Foi o meu próprio patrão — o contractor americano pra quem eu trabalhava — quem enxergou algo
-                em mim e me deu a oportunidade de assumir a empresa como dono. Foi ele também quem me ensinou
-                a abrir minha LLC sozinho, numa época em que eu via gente cobrando <strong className="text-foreground">US$ 500</strong> só
-                pra fazer esse registro.
-              </p>
-              <p className="leading-relaxed">
-                A partir daí, comecei a ajudar amigos da construção civil a abrir empresa, entregar o imposto
-                anual e resolver a burocracia que quase ninguém explica direito em português.
-              </p>
-              <div className="soft-card flex items-start gap-4 p-5">
-                <Quote className="mt-0.5 size-6 shrink-0 text-primary" />
-                <p className="text-sm font-medium leading-relaxed text-foreground">
-                  Foi assim que nasceu a DestravaUSA: pra fazer por outros brasileiros o que meu patrão fez
-                  por mim — abrir caminho, com preço justo e sem enrolação.
-                </p>
-              </div>
-              <div className="flex items-center gap-2 pt-2 text-sm text-muted-foreground">
-                <MapPin className="size-4 text-primary" />
-                Massachusetts, EUA
-              </div>
-            </div>
-
-            <div className="group/gallery grid grid-cols-2 gap-4">
-              <div className="group/photo col-span-2 overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
-                <img
-                  src={storyLadder}
-                  alt="Eduardo trabalhando em obra de pintura nos EUA, no início da carreira"
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
-                />
-              </div>
-              <div className="group/photo overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
-                <img
-                  src={storyBucket}
-                  alt="Eduardo em um trabalho de pintura residencial nos EUA"
-                  className="aspect-square w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
-                />
-              </div>
-              <div className="group/photo overflow-hidden rounded-3xl border border-border shadow-card transition-opacity duration-300 group-hover/gallery:opacity-60 hover:opacity-100!">
-                <img
-                  src={storyTruck}
-                  alt="Caminhonete da empresa de pintura de Eduardo nos EUA"
-                  className="aspect-square w-full object-cover transition-transform duration-500 ease-out group-hover/photo:scale-110"
-                />
-              </div>
-            </div>
-          </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Testimonials */}
       <section className="mx-auto max-w-6xl px-5 py-20">
         <Reveal>
@@ -573,23 +617,39 @@ function Index() {
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Brasileiros e latinos faturando em dólar</h2>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {testimonials.map((t) => (
-              <figure
-                key={t.n}
-                className="soft-card flex h-full flex-col gap-4 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card"
-              >
-                <div className="flex gap-1 text-primary">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="size-4 fill-current" />
-                  ))}
-                </div>
-                <blockquote className="text-sm leading-relaxed text-muted-foreground">“{t.q}”</blockquote>
-                <figcaption className="mt-auto text-sm font-semibold">
-                  {t.n}
-                  <span className="block text-xs font-normal text-muted-foreground">{t.r}</span>
-                </figcaption>
-              </figure>
-            ))}
+            {testimonials.map((t) => {
+              const initials = t.n
+                .split(" ")
+                .filter((w) => /^[A-Za-zÀ-ÿ]/.test(w))
+                .slice(0, 2)
+                .map((w) => w[0])
+                .join("")
+                .toUpperCase();
+              return (
+                <figure
+                  key={t.n}
+                  className="soft-card flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card"
+                >
+                  <figcaption className="flex items-center gap-3 border-b border-border/60 bg-card px-4 py-3">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-primary font-display text-xs font-bold text-primary-foreground">
+                      {initials}
+                    </span>
+                    <span className="text-sm">
+                      <span className="block font-semibold">{t.n}</span>
+                      <span className="block text-xs text-muted-foreground">{t.r}</span>
+                    </span>
+                  </figcaption>
+                  <div className="flex-1 bg-[#e9edef] p-4">
+                    <blockquote className="ml-auto max-w-[92%] rounded-lg rounded-tr-none bg-[#d9fdd3] px-3 py-2 text-sm leading-relaxed text-[#111b21] shadow-sm">
+                      {t.q}
+                      <span className="mt-1 flex items-center justify-end gap-1 text-[10px] text-[#667781]">
+                        <CheckCheck className="size-3.5 text-[#53bdeb]" />
+                      </span>
+                    </blockquote>
+                  </div>
+                </figure>
+              );
+            })}
           </div>
         </Reveal>
       </section>
