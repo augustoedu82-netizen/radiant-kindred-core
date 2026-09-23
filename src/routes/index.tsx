@@ -115,6 +115,36 @@ const testimonials = [
     r: "Juan Services LLC",
     q: "Tenho uma empresa de pintura e construção em Massachusetts. O Eduardo me ajudou do início ao fim: da criação da LLC ao EIN e ao annual report. Tudo em português e sem dor de cabeça.",
   },
+  {
+    n: "Lucas Ferreira",
+    r: "Pintura e Construção · Framingham, MA",
+    q: "Mano, salvou demais real. Eu tava há meses enrolando pra abrir a empresa de pintura porque o pessoal aqui cobrava um absurdo e falava um monte de coisa que só confundia. Fechei com vocês e foi rápido demais, sem dor de cabeça. O EIN saiu de boa, já abri a conta no banco e tô pegando trampo maior sem medo. Valeu mesmo, atendimento 10/10!",
+  },
+  {
+    n: "Rodrigo Mendes",
+    r: "Framing / Construção · Orlando, FL",
+    q: "Passando pra agradecer pelo trampo! Quem rala no trecho o dia todo não tem paciência nem tempo pra ficar quebrando a cabeça com papelada em inglês. Vocês desenrolaram tudo direto ao ponto. Agora tô fechando subcontrato direto com construtora grande com a LLC redondinha. Podem confiar, o trampo dos caras é diferenciado.",
+  },
+  {
+    n: "Camila Duarte",
+    r: "House Cleaning · New Jersey",
+    q: "Gente, eu tinha muito receio de mexer com isso de empresa, achava que era super difícil e caro. Uma amiga me passou o contato de vocês e me ajudaram em tudo, tiraram todas as minhas dúvidas com a maior paciência do mundo no zap. Já tô com a LLC bonitinha, passando muito mais moral pras clientes e organizando minhas coisas. Obrigada de verdade!",
+  },
+  {
+    n: "Rafael Fontes",
+    r: "Leilões & Flip · São Paulo",
+    q: "Galera, vim pelo feedback de um parceiro que já faz flip de carro aí nos EUA e me indicou vocês. Meu objetivo era entrar de cabeça nos leilões americanos (Copart, Manheim), mas travei porque sem LLC e EIN não libera cadastro nem a pau. O suporte de vocês foi absurdo, saiu tudo no prazo certinho. Conta aprovada, documentação ok e os primeiros lances já tão rolando!",
+  },
+  {
+    n: "Matheus Rocha",
+    r: "Leilões & Flip · Curitiba",
+    q: "Cara, processo muito liso. Eu tava querendo começar a arrematar lote em leilão nos Estados Unidos pra revender e fazer flip, mas tava perdidinho na parte burocrática de como operar legalizado daqui. Falei com o time, eles resolveram a abertura e os documentos sem frescura nenhuma. Já tô com acesso liberado nos leilões pra dar lance. Valeu a indicação, recomendo forte.",
+  },
+  {
+    n: "Thiago Siqueira",
+    r: "E-commerce / Venda Internacional · Belo Horizonte",
+    q: "Fala meu irmão! Só passando pra dar o feedback: consegui aprovar o Stripe e o Shopify Payments de primeira com a documentação da LLC que vocês abriram. Quem vende online sabe o pesadelo que é levar bloqueio em gateway de pagamento no Brasil. Com a estrutura americana tá rodando liso, sem estresse de checkout caindo. Trampo impecável!",
+  },
 ];
 
 const faqs = [
