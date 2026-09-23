@@ -16,6 +16,7 @@ import {
   Star,
   Timer,
 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import heroImage from "@/assets/hero-llc-light.jpg";
 import storyBucket from "@/assets/story-bucket.jpg";
 import storyTruck from "@/assets/story-truck.jpg";
@@ -25,20 +26,20 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "DestravaUSA — Abra sua empresa nos EUA sem sair do Brasil" },
+      { title: "DestravaUSA — Abra sua empresa nos EUA, do Brasil ou já morando por aqui" },
       {
         name: "description",
         content:
-          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português.",
+          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana — mesmo sem SSN ou ITIN. 100% remoto, em português, para quem está no Brasil ou já mora nos EUA.",
       },
       {
         property: "og:title",
-        content: "DestravaUSA — Abra sua empresa nos EUA sem sair do Brasil",
+        content: "DestravaUSA — Abra sua empresa nos EUA, do Brasil ou já morando por aqui",
       },
       {
         property: "og:description",
         content:
-          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana. 100% remoto, em português.",
+          "LLC nos EUA em até 6 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e suporte para conta bancária americana — mesmo sem SSN ou ITIN. 100% remoto, em português.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -62,6 +63,16 @@ const states = [
   { name: "Novo México", tag: "Sem annual report", d: "Menor manutenção anual — ideal para quem começa enxuto." },
   { name: "Flórida", tag: "Operação real", d: "Melhor para quem vende, contrata ou tem presença nos EUA." },
   { name: "Delaware", tag: "Investimento", d: "Padrão de startups que buscam investidor americano." },
+];
+
+const ALL_US_STATES = [
+  "Alabama", "Alasca", "Arizona", "Arkansas", "Califórnia", "Colorado", "Connecticut", "Delaware",
+  "Flórida", "Geórgia", "Havaí", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
+  "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi",
+  "Missouri", "Montana", "Nebraska", "Nevada", "Nova Hampshire", "Nova Jersey", "Novo México",
+  "Nova York", "Carolina do Norte", "Dakota do Norte", "Ohio", "Oklahoma", "Oregon", "Pensilvânia",
+  "Rhode Island", "Carolina do Sul", "Dakota do Sul", "Tennessee", "Texas", "Utah", "Vermont",
+  "Virgínia", "Washington", "Virgínia Ocidental", "Wisconsin", "Wyoming",
 ];
 
 const includes = [
@@ -218,6 +229,42 @@ function Nav() {
   );
 }
 
+function OtherStatePicker() {
+  const [otherState, setOtherState] = useState("");
+  const waHref = otherState
+    ? `${WHATSAPP}?text=${encodeURIComponent(`Quero abrir uma LLC em ${otherState}`)}`
+    : WHATSAPP;
+
+  return (
+    <div className="surface-card mt-8 flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div>
+        <h3 className="font-display text-lg font-bold">Não achou o seu estado aqui em cima?</h3>
+        <p className="mt-1 max-w-md text-sm text-muted-foreground">
+          Abrimos LLC em qualquer um dos 50 estados americanos. Escolha o seu e fale com a gente
+          pela taxa exata.
+        </p>
+      </div>
+      <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+        <Select value={otherState} onValueChange={setOtherState}>
+          <SelectTrigger className="w-full bg-card sm:w-56">
+            <SelectValue placeholder="Escolha um estado" />
+          </SelectTrigger>
+          <SelectContent className="max-h-72">
+            {ALL_US_STATES.map((s) => (
+              <SelectItem key={s} value={s}>
+                {s}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <a href={waHref} className="btn-primary justify-center sm:w-auto">
+          Consultar taxa <ArrowRight className="size-4" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div id="top" className="min-h-screen">
@@ -229,12 +276,13 @@ function Index() {
           <div>
             <span className="eyebrow">+800 empresas abertas</span>
             <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.06] sm:text-5xl lg:text-[3.4rem]">
-              Abra sua empresa nos <span className="text-primary">EUA</span> sem sair do Brasil
+              Abra sua empresa nos <span className="text-primary">EUA</span> — do Brasil ou já morando por aqui
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              LLC registrada, EIN emitido, endereço americano e conta bancária. 100% remoto,
-              serviço fixo de US$ 280 + taxa do estado escolhido. Suporte humano em português
-              do início ao fim.
+              LLC registrada, EIN emitido, endereço americano e conta bancária — sem precisar de
+              SSN ou ITIN. 100% remoto, serviço fixo de US$ 280 + taxa do estado escolhido.
+              Suporte humano em português do início ao fim, esteja você no Brasil ou já vivendo
+              nos EUA.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a href="#planos" className="btn-primary">
@@ -243,7 +291,7 @@ function Index() {
               <a href={WHATSAPP} className="btn-ghost">Falar com especialista</a>
             </div>
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              {["Sem visto ou viagem", "Documentos digitais", "Preço fechado"].map((f) => (
+              {["Sem visto ou viagem", "Mesmo sem SSN ou ITIN", "Documentos digitais", "Preço fechado"].map((f) => (
                 <li key={f} className="flex items-center gap-2">
                   <Check className="size-4 text-primary" /> {f}
                 </li>
@@ -359,6 +407,7 @@ function Index() {
           </p>
           <ul className="mt-7 space-y-3 text-sm">
             {[
+              "Não exige SSN nem ITIN — só passaporte e a LLC aprovada",
               "Aplicação remota na maioria dos casos",
               "Documentação preparada e revisada por nós",
               "Cartão corporativo e transferências internacionais",
@@ -411,6 +460,7 @@ function Index() {
                 </article>
               ))}
             </div>
+            <OtherStatePicker />
           </Reveal>
         </div>
       </section>
