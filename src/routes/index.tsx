@@ -511,6 +511,45 @@ function Index() {
         </div>
       </section>
 
+      {/* Video Testimonials */}
+      <section className="mx-auto max-w-6xl px-5 py-20">
+        <Reveal>
+          <div className="max-w-2xl">
+            <span className="eyebrow">Quem já destravou</span>
+            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+              Ouça direto de quem já abriu a empresa
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Depoimento real, sem roteiro — clique pra ouvir o que mudou depois que a LLC saiu.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {videoTestimonials.map((v) => (
+              <figure
+                key={v.name}
+                className="surface-card group overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow"
+              >
+                <div className="relative aspect-[9/16] bg-ink">
+                  <video
+                    src={v.src}
+                    poster={v.poster}
+                    controls
+                    preload="metadata"
+                    playsInline
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="p-5">
+                  <p className="text-sm font-semibold">{v.name}</p>
+                  <p className="text-xs text-muted-foreground">{v.role}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.quote}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
       {/* Steps */}
       <section id="como-funciona" className="mx-auto max-w-6xl px-5 py-20">
         <Reveal>
@@ -637,45 +676,6 @@ function Index() {
             <OtherStatePicker />
           </Reveal>
         </div>
-      </section>
-
-      {/* Video Testimonials */}
-      <section className="mx-auto max-w-6xl px-5 py-20">
-        <Reveal>
-          <div className="max-w-2xl">
-            <span className="eyebrow">Quem já destravou</span>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Ouça direto de quem já abriu a empresa
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Depoimento real, sem roteiro — clique pra ouvir o que mudou depois que a LLC saiu.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {videoTestimonials.map((v) => (
-              <figure
-                key={v.name}
-                className="surface-card group overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow"
-              >
-                <div className="relative aspect-[9/16] bg-ink">
-                  <video
-                    src={v.src}
-                    poster={v.poster}
-                    controls
-                    preload="metadata"
-                    playsInline
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <figcaption className="p-5">
-                  <p className="text-sm font-semibold">{v.name}</p>
-                  <p className="text-xs text-muted-foreground">{v.role}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.quote}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </Reveal>
       </section>
 
       {/* Testimonials */}
