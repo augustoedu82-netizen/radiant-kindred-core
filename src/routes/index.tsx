@@ -22,6 +22,12 @@ import heroImage from "@/assets/hero-founder.jpg";
 import storyBucket from "@/assets/story-bucket.jpg";
 import storyTruck from "@/assets/story-truck.jpg";
 import storyLadder from "@/assets/story-ladder.jpg";
+import testimonialJuan from "@/assets/testimonials/testimonial-juan.mp4";
+import testimonialJuanPoster from "@/assets/testimonials/testimonial-juan-poster.jpg";
+import testimonialDouglas from "@/assets/testimonials/testimonial-douglas.mp4";
+import testimonialDouglasPoster from "@/assets/testimonials/testimonial-douglas-poster.jpg";
+import testimonialOsvaldo from "@/assets/testimonials/testimonial-osvaldo.mp4";
+import testimonialOsvaldoPoster from "@/assets/testimonials/testimonial-osvaldo-poster.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -118,6 +124,30 @@ const stateFees = [
   { name: "Novo México", state: "US$ 50", total: "US$ 330" },
   { name: "Flórida", state: "US$ 125", total: "US$ 405" },
   { name: "Delaware", state: "US$ 110", total: "US$ 390" },
+];
+
+const videoTestimonials = [
+  {
+    src: testimonialJuan,
+    poster: testimonialJuanPoster,
+    name: "Juan Ramirez",
+    role: "Pintura · Rhode Island",
+    quote: "Agradece a agilidade e o suporte da DestravaUSA na abertura da empresa de pintura dele em Rhode Island.",
+  },
+  {
+    src: testimonialDouglas,
+    poster: testimonialDouglasPoster,
+    name: "Douglas",
+    role: "Drywall · Massachusetts",
+    quote: "Tava à beira de perder um trabalho de drywall em Massachusetts por falta da LLC — a agilidade e o preço da DestravaUSA salvaram o serviço.",
+  },
+  {
+    src: testimonialOsvaldo,
+    poster: testimonialOsvaldoPoster,
+    name: "Osvaldo",
+    role: "Pintura · Boston",
+    quote: "Agradece pela abertura, rápida e sem complicação, da empresa de pintura dele em Boston.",
+  },
 ];
 
 const testimonials = [
@@ -609,11 +639,50 @@ function Index() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Video Testimonials */}
       <section className="mx-auto max-w-6xl px-5 py-20">
         <Reveal>
           <div className="max-w-2xl">
             <span className="eyebrow">Quem já destravou</span>
+            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+              Ouça direto de quem já abriu a empresa
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Depoimento real, sem roteiro — clique pra ouvir o que mudou depois que a LLC saiu.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {videoTestimonials.map((v) => (
+              <figure
+                key={v.name}
+                className="surface-card group overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow"
+              >
+                <div className="relative aspect-[9/16] bg-ink">
+                  <video
+                    src={v.src}
+                    poster={v.poster}
+                    controls
+                    preload="metadata"
+                    playsInline
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="p-5">
+                  <p className="text-sm font-semibold">{v.name}</p>
+                  <p className="text-xs text-muted-foreground">{v.role}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.quote}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Testimonials */}
+      <section className="mx-auto max-w-6xl px-5 pb-20">
+        <Reveal>
+          <div className="max-w-2xl">
+            <span className="eyebrow">Mais avaliações</span>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Brasileiros e latinos faturando em dólar</h2>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
