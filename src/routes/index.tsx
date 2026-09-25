@@ -139,14 +139,14 @@ const videoTestimonials = [
     poster: testimonialDouglasPoster,
     name: "Douglas",
     role: "Drywall · Massachusetts",
-    quote: "Tava à beira de perder um trabalho de drywall em Massachusetts por falta da LLC — a agilidade e o preço da DestravaUSA salvaram o serviço.",
+    quote: "Estava à beira de perder um trabalho de drywall em Massachusetts por falta da LLC — agradece a agilidade e o preço bom da DestravaUSA por ter salvado o serviço.",
   },
   {
     src: testimonialOsvaldo,
     poster: testimonialOsvaldoPoster,
     name: "Osvaldo",
     role: "Pintura · Boston",
-    quote: "Agradece pela abertura, rápida e sem complicação, da empresa de pintura dele em Boston.",
+    quote: "Agradece pela abertura rápida e sem complicação da empresa de pintura dele em Boston.",
   },
 ];
 
