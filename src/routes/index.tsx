@@ -96,7 +96,7 @@ const audiences = [
     icon: HardHat,
     tag: "Já mora nos EUA",
     t: "Construção, limpeza e serviços",
-    d: "Trabalha no trecho, com pintura, limpeza ou tá começando no leilão/flip? Formalize sua LLC, tire o EIN e comece a pegar contrato direto com construtora grande, emitir invoice profissional e parar de receber cheque na mão de terceiro.",
+    d: "Trabalha com pintura, limpeza ou está começando no leilão/flip? Formalize sua LLC, tire o EIN e comece a pegar contrato direto com construtora grande, emitir invoice profissional e parar de receber cheque na mão de terceiro.",
   },
   {
     icon: Building2,
@@ -418,7 +418,7 @@ function Index() {
           <div className="max-w-2xl">
             <span className="eyebrow">Pra quem é</span>
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Não importa se você já tá aqui ou ainda no Brasil
+              Não importa se você já está aqui ou ainda no Brasil
             </h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
