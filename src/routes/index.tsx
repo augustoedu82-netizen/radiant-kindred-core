@@ -373,43 +373,24 @@ function Index() {
               ))}
             </ul>
           </div>
-          <div>
-            <div className="group relative">
-              <div className="soft-card overflow-hidden p-6 transition-shadow duration-300 hover:shadow-card sm:p-8">
-                <img
-                  src={heroImage}
-                  alt="Empreendedor brasileiro sorridente em frente ao seu negócio nos EUA, com a bandeira americana ao fundo"
-                  width={1152}
-                  height={928}
-                  className="w-full rounded-2xl object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                />
-              </div>
-              <div className="surface-card absolute -bottom-6 left-2 flex items-center gap-3 px-4 py-3 transition-transform duration-300 hover:-translate-y-1 sm:left-6">
-                <span className="grid size-9 place-items-center rounded-full bg-accent text-primary">
-                  <Timer className="size-4" />
-                </span>
-                <div className="text-sm">
-                  <p className="font-semibold">EIN emitido</p>
-                  <p className="text-xs text-muted-foreground">Pronto para faturar em dólar</p>
-                </div>
-              </div>
+          <div className="group relative">
+            <div className="soft-card overflow-hidden p-6 transition-shadow duration-300 hover:shadow-card sm:p-8">
+              <img
+                src={heroImage}
+                alt="Empreendedor brasileiro sorridente em frente ao seu negócio nos EUA, com a bandeira americana ao fundo"
+                width={1152}
+                height={928}
+                className="w-full rounded-2xl object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              />
             </div>
-            <div className="soft-card mt-16 p-6 sm:mt-14">
-              <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                Já mora nos EUA? Isso muda pra você:
-              </p>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {[
-                  "Fecha contrato direto com construtora grande",
-                  "Emite invoice profissional, no nome da empresa",
-                  "Abre conta bancária business sem precisar de SSN",
-                  "Sai da informalidade e para de receber por fora",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <Check className="mt-0.5 size-4 shrink-0 text-primary" /> {f}
-                  </li>
-                ))}
-              </ul>
+            <div className="surface-card absolute -bottom-6 left-2 flex items-center gap-3 px-4 py-3 transition-transform duration-300 hover:-translate-y-1 sm:left-6">
+              <span className="grid size-9 place-items-center rounded-full bg-accent text-primary">
+                <Timer className="size-4" />
+              </span>
+              <div className="text-sm">
+                <p className="font-semibold">EIN emitido</p>
+                <p className="text-xs text-muted-foreground">Pronto para faturar em dólar</p>
+              </div>
             </div>
           </div>
         </div>
