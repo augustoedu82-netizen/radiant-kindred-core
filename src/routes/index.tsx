@@ -16,9 +16,12 @@ import {
   Receipt,
   ShieldCheck,
   Timer,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import heroImage from "@/assets/hero-founder.jpg";
+import heroVideo from "@/assets/hero/hero-eduardo.mp4";
+import heroVideoPoster from "@/assets/hero/hero-eduardo-poster.jpg";
 import storyBucket from "@/assets/story-bucket.jpg";
 import storyTruck from "@/assets/story-truck.jpg";
 import storyLadder from "@/assets/story-ladder.jpg";
@@ -204,7 +207,7 @@ const faqs = [
   },
   {
     q: "Vou pagar imposto nos EUA?",
-    a: "Se você não é residente, não tem estoque em território americano e não tem sócio americano, sua LLC normalmente é isenta de imposto federal — restando apenas a declaração anual obrigatória.",
+    a: "A LLC é uma empresa de repasse (pass-through): o resultado é tributado nos sócios, não na empresa. Em muitos casos de não residentes sem atividade nos EUA não há imposto federal de renda, mas a declaração anual informativa (Form 5472) é obrigatória mesmo sem lucro, e as regras variam de caso a caso. Recomendamos conversar com um contador sobre a sua situação.",
   },
   {
     q: "Em quanto tempo a empresa fica pronta?",
@@ -341,6 +344,48 @@ function OtherStatePicker() {
   );
 }
 
+function HeroVideo() {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  const toggleSound = () => {
+    const v = ref.current;
+    if (!v) return;
+    const next = !muted;
+    v.muted = next;
+    if (!next) {
+      v.currentTime = 0;
+      void v.play();
+    }
+    setMuted(next);
+  };
+
+  return (
+    <div className="relative aspect-[9/16] overflow-hidden rounded-2xl bg-ink">
+      <video
+        ref={ref}
+        src={heroVideo}
+        poster={heroVideoPoster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-label="Eduardo, fundador da Destrava USA, explica como abrir uma LLC nos EUA sem documento americano"
+        className="h-full w-full object-cover"
+      />
+      <button
+        type="button"
+        onClick={toggleSound}
+        className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full bg-ink/85 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition-colors hover:bg-ink"
+      >
+        {muted ? <VolumeX className="size-4" /> : <Volume2 className="size-4" />}
+        {muted ? "Ativar som" : "Som ligado"}
+      </button>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div id="top" className="min-h-screen">
@@ -374,14 +419,8 @@ function Index() {
             </ul>
           </div>
           <div className="group relative">
-            <div className="soft-card overflow-hidden p-6 transition-shadow duration-300 hover:shadow-card sm:p-8">
-              <img
-                src={heroImage}
-                alt="Empreendedor brasileiro sorridente em frente ao seu negócio nos EUA, com a bandeira americana ao fundo"
-                width={1152}
-                height={928}
-                className="w-full rounded-2xl object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-              />
+            <div className="soft-card mx-auto max-w-[360px] overflow-hidden p-3 transition-shadow duration-300 hover:shadow-card sm:p-4">
+              <HeroVideo />
             </div>
             <div className="surface-card absolute -bottom-6 left-2 flex items-center gap-3 px-4 py-3 transition-transform duration-300 hover:-translate-y-1 sm:left-6">
               <span className="grid size-9 place-items-center rounded-full bg-accent text-primary">
@@ -846,7 +885,24 @@ function Index() {
           <p className="font-display font-bold text-foreground">
             Destrava<span className="text-primary">USA</span>
           </p>
-          <p>© {new Date().getFullYear()} DestravaUSA · Assessoria privada para empresas nos EUA</p>
+          <div className="flex flex-col gap-1 sm:items-end">
+            <p>© {new Date().getFullYear()} DestravaUSA · Assessoria privada para empresas nos EUA</p>
+            <p>15 Cleveland Avenue, Everett, MA</p>
+            <p>
+              Contato:{" "}
+              <a href="mailto:destravausa@gmail.com" className="font-medium text-foreground underline-offset-4 hover:underline">
+                destravausa@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className="mx-auto max-w-6xl border-t border-border px-5 py-6">
+          <p className="max-w-4xl text-xs leading-relaxed text-muted-foreground">
+            A DestravaUSA é uma empresa de assessoria administrativa e não é um escritório de advocacia
+            nem de contabilidade (CPA). Não fornecemos aconselhamento jurídico, tributário ou
+            financeiro. A aprovação de contas bancárias e de meios de pagamento está sujeita à análise
+            exclusiva das respectivas instituições financeiras.
+          </p>
         </div>
       </footer>
     </div>
