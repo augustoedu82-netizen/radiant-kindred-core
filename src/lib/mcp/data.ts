@@ -40,7 +40,7 @@ export const STATES: StateOption[] = [
 export const PROCESS_STEPS = [
   "Escolha do estado e do nome da empresa, com checagem de disponibilidade.",
   "Registro da LLC junto ao estado, com registered agent grátis por 1 ano.",
-  "Solicitação do EIN (CNPJ americano) junto ao IRS.",
+  "Solicitação do número fiscal (CNPJ americano) junto ao IRS.",
   "Preparação da documentação para abertura de conta bancária/fintech remota.",
 ];
 
@@ -63,7 +63,7 @@ export const FAQ = [
   {
     question: "Em quanto tempo a empresa fica pronta?",
     answer:
-      "Em Wyoming o registro sai em cerca de 1 dia útil. Com o EIN solicitado e obtido junto ao IRS, o processo completo leva entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
+      "Em Wyoming o registro sai em cerca de 1 dia útil. Com o número fiscal americano solicitado e obtido junto ao IRS, o processo completo leva entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
   },
   {
     question: "Consigo abrir conta bancária de verdade?",
@@ -75,7 +75,7 @@ export const FAQ = [
 export const INCLUDED = [
   "Registro da LLC no estado escolhido",
   "Registered agent grátis por 1 ano",
-  "EIN (CNPJ americano) junto ao IRS",
+  "Número fiscal (CNPJ americano) junto ao IRS",
   "Operating Agreement",
   "Apoio na abertura de conta bancária/fintech",
   "Suporte humano em português",

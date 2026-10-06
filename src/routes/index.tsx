@@ -65,7 +65,7 @@ const steps = [
   { n: "1", t: "Você envia seus dados", d: "Passaporte, endereço e nome desejado da empresa. Leva 10 minutos." },
   { n: "2", t: "Preparamos tudo", d: "Documentação revisada por especialistas antes de qualquer protocolo." },
   { n: "3", t: "Registro no estado", d: "Protocolamos no estado escolhido e acompanhamos até a aprovação." },
-  { n: "4", t: "Solicitação do EIN", d: "Auxiliamos no processo de solicitação do EIN. Empresa aberta, documentos digitais na sua mão e próximo passo: o banco." },
+  { n: "4", t: "Número fiscal americano", d: "Auxiliamos no processo de solicitação do seu número fiscal (CNPJ americano). Empresa aberta, documentos digitais na sua mão e próximo passo: o banco." },
 ];
 
 const states = [
@@ -87,7 +87,7 @@ const ALL_US_STATES = [
 
 const includes = [
   { icon: Building2, t: "Abertura da LLC", d: "Registro estadual, articles of organization e operating agreement." },
-  { icon: FileCheck2, t: "EIN (Tax ID)", d: "Seu CNPJ americano, incluído no processo, sem custo extra." },
+  { icon: FileCheck2, t: "Número fiscal (Tax ID)", d: "Seu CNPJ americano, incluído no processo, sem custo extra." },
   { icon: Mail, t: "Endereço nos EUA", d: "Endereço comercial real, com correspondência digitalizada." },
   { icon: ShieldCheck, t: "Registered agent", d: "Agente registrado no estado por 12 meses, obrigatório por lei." },
   { icon: Landmark, t: "Suporte bancário", d: "Mercury, Relay, Wise e Payoneer: preparamos toda a aplicação." },
@@ -99,7 +99,7 @@ const audiences = [
     icon: HardHat,
     tag: "Já mora nos EUA",
     t: "Construção, limpeza e serviços",
-    d: "Trabalha com pintura, limpeza ou está começando no leilão/flip? Formalize sua LLC, tire o EIN e comece a pegar contrato direto com construtora grande, emitir invoice profissional e parar de receber cheque na mão de terceiro.",
+    d: "Trabalha com pintura, limpeza ou está começando no leilão/flip? Formalize sua LLC, tire seu número fiscal americano e comece a pegar contrato direto com construtora grande, emitir invoice profissional e parar de receber cheque na mão de terceiro.",
   },
   {
     icon: Building2,
@@ -113,7 +113,7 @@ const banks = ["Mercury", "Relay", "Wise", "Payoneer", "Revolut", "Lili"];
 
 const offerFeatures = [
   "Abertura da LLC no estado escolhido",
-  "EIN (Tax ID) incluído",
+  "Número fiscal (Tax ID) incluído",
   "Registered agent grátis por 1 ano",
   "Operating agreement e documentos oficiais",
   "Endereço comercial nos EUA",
@@ -211,7 +211,7 @@ const faqs = [
   },
   {
     q: "Em quanto tempo a empresa fica pronta?",
-    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com o EIN solicitado e obtido junto ao IRS, o processo completo leva entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
+    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com o número fiscal americano solicitado e obtido junto ao IRS, o processo completo leva entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
   },
   {
     q: "Consigo abrir conta bancária de verdade?",
@@ -404,7 +404,7 @@ function Index() {
               Abra e legalize sua empresa nos <span className="text-primary">EUA</span> — morando aqui ou no Brasil
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              LLC registrada, auxílio na solicitação do EIN e apoio para conta bancária comercial — sem precisar de SSN
+              LLC registrada, auxílio na solicitação do número fiscal americano e apoio para conta bancária comercial — sem precisar de SSN
               ou ITIN. Seja pra formalizar seu trabalho na construção civil e serviços nos EUA, ou
               pra faturar em dólar direto do Brasil. 100% em português, sem complicação.
             </p>
@@ -431,7 +431,7 @@ function Index() {
                 <Timer className="size-4" />
               </span>
               <div className="text-sm">
-                <p className="font-semibold">Auxílio no EIN</p>
+                <p className="font-semibold">Auxílio no número fiscal</p>
                 <p className="text-xs text-muted-foreground">Pronto para faturar em dólar</p>
               </div>
             </div>

@@ -24,7 +24,7 @@ export default defineTool({
     const overview = {
       brand: "DestravaUSA",
       summary:
-        "Abertura de LLC nos EUA para brasileiros, 100% remota, sem visto, com EIN e apoio bancário.",
+        "Abertura de LLC nos EUA para brasileiros, 100% remota, sem visto, com número fiscal americano e apoio bancário.",
       serviceFeeUsd: SERVICE_FEE_USD,
       pricingModel: "Serviço fixo de US$ 280 + taxa estadual variável paga diretamente ao estado.",
       timeline: "Entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
