@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "LLC nos EUA em 5 a 10 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
+          "LLC nos EUA em 5 a 10 dias úteis, dependendo do estado: endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
       },
       {
         property: "og:title",
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "LLC nos EUA em 5 a 10 dias úteis, dependendo do estado: EIN, endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
+          "LLC nos EUA em 5 a 10 dias úteis, dependendo do estado: endereço fiscal, registered agent e conta bancária comercial — mesmo sem SSN ou ITIN. 100% em português, para quem já mora nos EUA ou empreende do Brasil.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
