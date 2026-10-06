@@ -896,7 +896,17 @@ function Index() {
             </p>
           </div>
         </div>
-        <div className="mx-auto max-w-6xl border-t border-border px-5 py-6">
+        <div className="mx-auto max-w-6xl border-t border-border px-5 pt-6">
+          <div
+            role="note"
+            className="rounded-xl border-2 border-primary/40 bg-primary/10 px-5 py-4 text-sm font-semibold leading-relaxed text-foreground sm:text-base"
+          >
+            A Destrava USA é uma assessoria privada B2B. Não somos um órgão governamental e não
+            emitimos documentos oficiais. As taxas estaduais não estão inclusas no valor da
+            assessoria.
+          </div>
+        </div>
+        <div className="mx-auto max-w-6xl px-5 py-6">
           <p className="max-w-4xl text-xs leading-relaxed text-muted-foreground">
             A DestravaUSA é uma empresa de assessoria administrativa e não é um escritório de advocacia
             nem de contabilidade (CPA). Não fornecemos aconselhamento jurídico, tributário ou
