@@ -65,7 +65,7 @@ const steps = [
   { n: "1", t: "Você envia seus dados", d: "Passaporte, endereço e nome desejado da empresa. Leva 10 minutos." },
   { n: "2", t: "Preparamos tudo", d: "Documentação revisada por especialistas antes de qualquer protocolo." },
   { n: "3", t: "Registro no estado", d: "Protocolamos no estado escolhido e acompanhamos até a aprovação." },
-  { n: "4", t: "EIN emitido", d: "Empresa aberta, documentos digitais na sua mão e próximo passo: o banco." },
+  { n: "4", t: "Solicitação do EIN", d: "Auxiliamos no processo de solicitação do EIN. Empresa aberta, documentos digitais na sua mão e próximo passo: o banco." },
 ];
 
 const states = [
@@ -211,7 +211,7 @@ const faqs = [
   },
   {
     q: "Em quanto tempo a empresa fica pronta?",
-    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com EIN emitido, o processo completo leva entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
+    a: "Em Wyoming o registro sai em cerca de 1 dia útil. Com o EIN solicitado e obtido junto ao IRS, o processo completo leva entre 5 e 10 dias úteis, dependendo do estado e da fila do IRS.",
   },
   {
     q: "Consigo abrir conta bancária de verdade?",
@@ -400,7 +400,7 @@ function Index() {
               Abra e legalize sua empresa nos <span className="text-primary">EUA</span> — morando aqui ou no Brasil
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              LLC registrada, EIN emitido e conta bancária comercial pronta — sem precisar de SSN
+              LLC registrada, auxílio na solicitação do EIN e apoio para conta bancária comercial — sem precisar de SSN
               ou ITIN. Seja pra formalizar seu trabalho na construção civil e serviços nos EUA, ou
               pra faturar em dólar direto do Brasil. 100% em português, sem complicação.
             </p>
@@ -427,7 +427,7 @@ function Index() {
                 <Timer className="size-4" />
               </span>
               <div className="text-sm">
-                <p className="font-semibold">EIN emitido</p>
+                <p className="font-semibold">Auxílio no EIN</p>
                 <p className="text-xs text-muted-foreground">Pronto para faturar em dólar</p>
               </div>
             </div>
@@ -901,9 +901,14 @@ function Index() {
             role="note"
             className="rounded-xl border-2 border-primary/40 bg-primary/10 px-5 py-4 text-sm font-semibold leading-relaxed text-foreground sm:text-base"
           >
-            A Destrava USA é uma assessoria privada B2B. Não somos um órgão governamental e não
-            emitimos documentos oficiais. As taxas estaduais não estão inclusas no valor da
-            assessoria.
+            <p>
+              A Destrava USA é uma assessoria privada de suporte administrativo B2B. Não possuímos
+              afiliação com órgãos governamentais dos EUA e não prestamos aconselhamento jurídico.
+            </p>
+            <p className="mt-2">
+              Não somos um órgão governamental e não emitimos documentos oficiais. As taxas estaduais
+              não estão inclusas no valor da assessoria.
+            </p>
           </div>
         </div>
         <div className="mx-auto max-w-6xl px-5 py-6">
