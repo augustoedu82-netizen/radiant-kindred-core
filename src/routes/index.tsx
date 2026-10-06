@@ -389,6 +389,10 @@ function HeroVideo() {
 function Index() {
   return (
     <div id="top" className="min-h-screen">
+      <div role="note" className="border-b border-border bg-surface px-5 py-2 text-center text-xs leading-snug text-muted-foreground sm:text-sm">
+        A Destrava USA é uma assessoria privada de suporte administrativo B2B, sem afiliação com
+        órgãos governamentais dos EUA. Não prestamos aconselhamento jurídico.
+      </div>
       <Nav />
 
       {/* Hero */}
