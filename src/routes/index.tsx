@@ -157,17 +157,17 @@ const testimonials = [
   {
     n: "Martinelli & Co LLC",
     r: "E-commerce global",
-    q: "Criei minha empresa em Wyoming para operar no e-commerce global. O Eduardo fez todo o processo comigo, do registro ao EIN, e foi o menor custo que encontrei para abrir LLC nos EUA.",
+    q: "Criei minha empresa em Wyoming para operar no e-commerce global. O Eduardo fez todo o processo comigo, do registro até o fim do processo, e foi o menor custo que encontrei para abrir LLC nos EUA.",
   },
   {
     n: "Juan Arango Ramirez",
     r: "Juan Services LLC",
-    q: "Tenho uma empresa de pintura e construção em Massachusetts. O Eduardo me ajudou do início ao fim: da criação da LLC ao EIN e ao annual report. Tudo em português e sem dor de cabeça.",
+    q: "Tenho uma empresa de pintura e construção em Massachusetts. O Eduardo me ajudou do início ao fim: da criação da LLC ao annual report. Tudo em português e sem dor de cabeça.",
   },
   {
     n: "Lucas Ferreira",
     r: "Pintura e Construção · Framingham, MA",
-    q: "Mano, salvou demais real. Eu tava há meses enrolando pra abrir a empresa de pintura porque o pessoal aqui cobrava um absurdo e falava um monte de coisa que só confundia. Fechei com vocês e foi rápido demais, sem dor de cabeça. O EIN saiu de boa, já abri a conta no banco e tô pegando trampo maior sem medo. Valeu mesmo, atendimento 10/10!",
+    q: "Mano, salvou demais real. Eu tava há meses enrolando pra abrir a empresa de pintura porque o pessoal aqui cobrava um absurdo e falava um monte de coisa que só confundia. Fechei com vocês e foi rápido demais, sem dor de cabeça. Saiu tudo de boa, já abri a conta no banco e tô pegando trampo maior sem medo. Valeu mesmo, atendimento 10/10!",
   },
   {
     n: "Rodrigo Mendes",
@@ -182,7 +182,7 @@ const testimonials = [
   {
     n: "Rafael Fontes",
     r: "Leilões & Flip · São Paulo",
-    q: "Galera, vim pelo feedback de um parceiro que já faz flip de carro aí nos EUA e me indicou vocês. Meu objetivo era entrar de cabeça nos leilões americanos (Copart, Manheim), mas travei porque sem LLC e EIN não libera cadastro nem a pau. O suporte de vocês foi absurdo, saiu tudo no prazo certinho. Conta aprovada, documentação ok e os primeiros lances já tão rolando!",
+    q: "Galera, vim pelo feedback de um parceiro que já faz flip de carro aí nos EUA e me indicou vocês. Meu objetivo era entrar de cabeça nos leilões americanos (Copart, Manheim), mas travei porque sem LLC não libera cadastro nem a pau. O suporte de vocês foi absurdo, saiu tudo no prazo certinho. Conta aprovada, documentação ok e os primeiros lances já tão rolando!",
   },
   {
     n: "Matheus Rocha",
