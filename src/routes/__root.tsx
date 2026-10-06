@@ -101,6 +101,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap",
       },
     ],
+    scripts: [
+      { src: "https://www.googletagmanager.com/gtag/js?id=AW-18496707490", async: true },
+      {
+        children:
+          "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-18496707490');",
+      },
+    ],
   }),
 
   shellComponent: RootShell,
