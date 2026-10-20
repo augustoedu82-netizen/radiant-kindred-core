@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { src: "https://www.googletagmanager.com/gtag/js?id=AW-18496707490", async: true },
       {
         children:
-          "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-18496707490');",
+          "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-18496707490');document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*=\"wa.me\"]');if(a){gtag('event','conversion',{'send_to':'AW-18496707490/7ZThCLOSypIdEKK39fNE','value':1.0,'currency':'BRL'});}},true);",
       },
     ],
   }),
