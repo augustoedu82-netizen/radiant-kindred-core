@@ -246,3 +246,15 @@ create policy "cliente envia arquivos" on storage.objects
     bucket_id = 'documentos'
     and public.owns_company(((storage.foldername(name))[1])::uuid)
   );
+
+-- ---------------------------------------------------------------------------
+-- Permissões da Data API (necessárias se "expor novas tabelas" estiver desligado).
+-- O acesso real continua limitado pelas políticas de RLS acima.
+-- ---------------------------------------------------------------------------
+grant usage on schema public to anon, authenticated;
+grant select, insert, update, delete on
+  public.profiles, public.companies, public.company_notes, public.documents,
+  public.tasks, public.updates, public.credentials, public.settings
+  to authenticated;
+grant execute on function public.is_admin(), public.current_email(), public.owns_company(uuid)
+  to authenticated;
