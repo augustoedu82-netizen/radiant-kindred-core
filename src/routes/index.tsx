@@ -285,8 +285,8 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-4 sm:px-5">
-        <a href="#top" className="flex items-center gap-2 font-display text-base font-extrabold tracking-tight sm:text-lg">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+        <a href="#top" className="flex items-center gap-2 font-display text-lg font-extrabold tracking-tight">
           <span className="grid size-8 place-items-center rounded-xl bg-primary text-primary-foreground">
             <Globe2 className="size-4" />
           </span>
@@ -300,15 +300,9 @@ function Nav() {
           <a className="transition-colors hover:text-primary" href="#planos">Preço</a>
           <a className="transition-colors hover:text-primary" href="#faq">Dúvidas</a>
         </nav>
-        <div className="flex items-center gap-2">
-          <a href="/entrar" className="btn-ghost whitespace-nowrap !px-3 !py-2.5 !text-sm sm:!px-4">
-            <span className="sm:hidden">Entrar</span>
-            <span className="hidden sm:inline">Área do cliente</span>
-          </a>
-          <a href={WHATSAPP} className="btn-primary whitespace-nowrap !px-3 !py-2.5 !text-sm sm:!px-5">
-            Começar<span className="hidden sm:inline"> agora</span>
-          </a>
-        </div>
+        <a href={WHATSAPP} className="btn-primary !px-5 !py-2.5 !text-sm">
+          Começar agora
+        </a>
       </div>
     </header>
   );
