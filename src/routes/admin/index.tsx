@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { NewCompanyDialog } from "@/components/portal/new-company-dialog";
 import { PortalHeader, Spinner } from "@/components/portal/shell";
 import { Empty, Panel, ProgressBar, StatusPill } from "@/components/portal/widgets";
 import { createCompany, listCompanies, listTasks } from "@/lib/portal/api";
@@ -243,7 +244,7 @@ function AdminDashboard() {
           )}
         </Panel>
       </main>
-      <NewClientDialog open={creating} onOpenChange={setCreating} />
+      <NewCompanyDialog open={creating} onOpenChange={setCreating} />
     </>
   );
 }
@@ -274,102 +275,5 @@ function ClientRow({ company: c }: { company: Company }) {
         {c.annual_report_due ? dueLabel(c.annual_report_due) : "—"}
       </td>
     </tr>
-  );
-}
-
-function NewClientDialog({
-  open,
-  onOpenChange,
-}: {
-  open: boolean;
-  onOpenChange: (v: boolean) => void;
-}) {
-  const qc = useQueryClient();
-  const navigate = useNavigate();
-  const [busy, setBusy] = useState(false);
-  const [form, setForm] = useState({
-    client_name: "",
-    client_email: "",
-    client_phone: "",
-    company_name: "",
-    state: "",
-  });
-  const set = (k: keyof typeof form) => (e: { target: { value: string } }) =>
-    setForm({ ...form, [k]: e.target.value });
-
-  async function submit(e: FormEvent) {
-    e.preventDefault();
-    if (!form.state) {
-      toast.error("Escolha o estado da LLC.");
-      return;
-    }
-    setBusy(true);
-    try {
-      const c = await createCompany({ ...form, client_phone: form.client_phone || null });
-      await qc.invalidateQueries({ queryKey: ["companies"] });
-      toast.success("Cliente cadastrado! Peça para ele criar a conta em /entrar com esse e-mail.");
-      onOpenChange(false);
-      setForm({ client_name: "", client_email: "", client_phone: "", company_name: "", state: "" });
-      void navigate({ to: "/admin/$id", params: { id: c.id } });
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Não foi possível cadastrar.");
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg">
-        <DialogHeader>
-          <DialogTitle>Novo cliente</DialogTitle>
-        </DialogHeader>
-        <form onSubmit={submit} className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-1.5 sm:col-span-2">
-            <Label>Nome do cliente</Label>
-            <Input value={form.client_name} onChange={set("client_name")} required />
-          </div>
-          <div className="space-y-1.5">
-            <Label>E-mail (login do portal)</Label>
-            <Input type="email" value={form.client_email} onChange={set("client_email")} required />
-          </div>
-          <div className="space-y-1.5">
-            <Label>WhatsApp</Label>
-            <Input value={form.client_phone} onChange={set("client_phone")} placeholder="+55 ..." />
-          </div>
-          <div className="space-y-1.5">
-            <Label>Nome da LLC</Label>
-            <Input
-              value={form.company_name}
-              onChange={set("company_name")}
-              required
-              placeholder="Exemplo LLC"
-            />
-          </div>
-          <div className="space-y-1.5">
-            <Label>Estado</Label>
-            <Select value={form.state} onValueChange={(v) => setForm({ ...form, state: v })}>
-              <SelectTrigger>
-                <SelectValue placeholder="Escolha o estado" />
-              </SelectTrigger>
-              <SelectContent className="max-h-72">
-                {US_STATES.map((s) => (
-                  <SelectItem key={s} value={s}>
-                    {s}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <button
-            type="submit"
-            disabled={busy}
-            className="btn-primary sm:col-span-2 disabled:opacity-60"
-          >
-            {busy && <Loader2 className="size-4 animate-spin" />} Cadastrar cliente
-          </button>
-        </form>
-      </DialogContent>
-    </Dialog>
   );
 }
