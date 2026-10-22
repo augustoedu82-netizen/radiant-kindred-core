@@ -29,6 +29,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { NewCompanyDialog } from "@/components/portal/new-company-dialog";
 import { PortalHeader, Spinner } from "@/components/portal/shell";
 import {
   DocumentRow,
@@ -47,6 +48,7 @@ import {
   deleteTask,
   deleteUpdate,
   getCompany,
+  listCompanies,
   getSetting,
   listCredentials,
   listDocuments,
@@ -114,6 +116,11 @@ function useRefresh(id: string) {
 function ClientDetail({ company }: { company: Company }) {
   const refresh = useRefresh(company.id);
   const whatsapp = company.client_phone?.replace(/\D/g, "");
+  const [addingLlc, setAddingLlc] = useState(false);
+  const all = useQuery({ queryKey: ["companies"], queryFn: listCompanies });
+  const siblings = (all.data ?? []).filter(
+    (c) => c.client_email.toLowerCase() === company.client_email.toLowerCase(),
+  );
 
   async function toggleStep(key: string, done: boolean) {
     const steps = { ...company.steps, [key]: done ? new Date().toISOString() : null };
@@ -150,17 +157,51 @@ function ClientDetail({ company }: { company: Company }) {
             {company.client_name} · {company.client_email} · {company.state}
           </p>
         </div>
-        {whatsapp && (
-          <a
-            href={`https://wa.me/${whatsapp}`}
-            target="_blank"
-            rel="noreferrer"
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setAddingLlc(true)}
             className="btn-ghost !px-4 !py-2 !text-sm"
           >
-            <MessageCircle className="size-4" /> WhatsApp do cliente
-          </a>
-        )}
+            <Plus className="size-4" /> Adicionar outra LLC
+          </button>
+          {whatsapp && (
+            <a
+              href={`https://wa.me/${whatsapp}`}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ghost !px-4 !py-2 !text-sm"
+            >
+              <MessageCircle className="size-4" /> WhatsApp do cliente
+            </a>
+          )}
+        </div>
       </div>
+
+      {siblings.length > 1 && (
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            LLCs deste cliente:
+          </span>
+          {siblings.map((c) => (
+            <Link
+              key={c.id}
+              to="/admin/$id"
+              params={{ id: c.id }}
+              className={cn(
+                "rounded-full border px-3 py-1 text-sm font-medium transition-colors",
+                c.id === company.id
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card hover:border-primary hover:text-primary",
+              )}
+            >
+              {c.company_name}
+            </Link>
+          ))}
+        </div>
+      )}
+
+      <NewCompanyDialog open={addingLlc} onOpenChange={setAddingLlc} client={company} />
 
       <Tabs defaultValue="geral" className="mt-6">
         <TabsList className="h-auto w-full flex-wrap justify-start gap-1 rounded-2xl bg-card p-1.5 shadow-sm sm:w-auto">

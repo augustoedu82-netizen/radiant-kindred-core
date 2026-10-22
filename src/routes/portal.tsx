@@ -85,7 +85,10 @@ function ClientPortal() {
           <>
             <CompanyHero company={company} />
             {companies.data!.length > 1 && (
-              <div className="mt-4 max-w-xs">
+              <div className="mt-4 max-w-xs space-y-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  Você tem {companies.data!.length} empresas. Escolha qual ver:
+                </p>
                 <Select value={company.id} onValueChange={setSelected}>
                   <SelectTrigger className="bg-card">
                     <SelectValue />
